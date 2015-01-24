@@ -21,7 +21,7 @@ bool system(std::vector<char*> com){
     }
     argv[argc-1] = '\0';
     int pid = fork();
-    if (pid < 0) //there was an error in the fork process
+    if (pid == -1) //there was an error in the fork process
     {
         perror("error with fork");
         exit(1);
@@ -48,70 +48,50 @@ bool system(std::vector<char*> com){
 }
 
 void fixline(string &input){
-    int pos = 0;
-    pos = input.find("#"); //checks the input vector for "#" symbol
-                          //deletes everything after it, disregard as comments
-    if (pos != 0){
-        input.erase(pos);
-    }
 
-    for (int x = 0; x < input.size(); x++){
-        pos = input.find(";",x,1);
-        if (pos != string::npos){
-            input.replace(pos,1," ; ");
+    unsigned int pos = 0;
+    unsigned int count = 0;
+
+    while (pos < input.size()){
+
+     pos = input.find(";",pos+1,1); //searches string for ; in the command
+     if (pos != string::npos&&count!=pos){
+            input.replace(pos,1," ; "); //adds space between it
         }
 
     }
 
-    for (int x = 0; x < input.size(); x++){
-        pos = input.find("&&",x,2);
-        if (pos != string::npos){
-            input.replace(pos,2," && ");
+    pos = 0;
+    count = 0;
+
+    while (pos < input.size()){
+
+        pos = input.find("&&",pos+2,2); //searches for && in the commands
+        if (pos!= string::npos){
+            input.replace(pos,2," && "); //adds space between the connectors
         }
     }
 
-    for (int x = 0; x < input.size(); x++){
-        pos = input.find("||",x,2);
-        if (pos != string::npos){
+
+    pos = 0;
+    count = 0;
+    while (pos < input.size()){
+
+        pos = input.find("||",pos+2,2); //  searches for || after first one is found
+        if (pos!= string::npos){ //adds space between the connectors
             input.replace(pos,2," || ");
         }
-   }
-   /* while (x < input.size()){  //looks for the first ;
-     x = input.find(";",x+1,1); //searches string for ; after the first one is found
-     if (x != string::npos && count != x){
-            input.replace(x,1," ; "); //adds space between it
-            count = x+1;
-        }
 
-    }
-
-    int x = 0;
-    int count = 0;
-    while (x < input.size()){
-        x = input.find("&&",x+2,2); //continues to search for && after first one is found
-        if (x!= string::npos && count != x){
-            input.replace(x,2," && "); //adds space between the connectors
-            count = x+2;
-        }
-    }
-
-
-    x = 0;
-    count = 0;
-    while (x < input.size()){ //searches for the first || that appears
-        x = input.find("||",x+2,2); //continues to search for || after first one is found
-        if (x!= string::npos && count != x){ //adds space between the connectors
-            input.replace(x,2," || ");
-            count = x + 2;
-        }
-     }*/
+     }
 }
 
 int main(){
     char hostname[200];
     char username[200];
     vector <char*> commands;
+    commands.resize(30000);
     vector <char*> wordlist;
+    commands.resize(30000);
     string single;
     string userinput;
     bool first = true;
@@ -131,15 +111,14 @@ int main(){
             commands.push_back(token);
             token = std::strtok(NULL, " ");
         }
-        for (int i = 0; i < commands.size(); i++){
+        for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
 
-           cout << commands.at(i);
-           /* single = commands.at(i);
-            if (single == "exit"){
+            single = commands.at(i);
+            if (single == "exit"){ //exits out of the shell if exit is found
                 exit(0);
             }
-            else if (single == ";" &&  !wordlist.empty()){
-                if (first){
+            else if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
+                if (first){ //if its the first command
                     previous = system(wordlist);
                     first = false;
                     wordlist.clear();
@@ -148,7 +127,7 @@ int main(){
                 wordlist.clear();
 
             }
-            else if (single == "&&" && !wordlist.empty()){
+            else if (single == "&&" && !wordlist.empty()){ //will execute if the first command is successfully executed
                 if(first){
                     previous = system(wordlist);
                     first = false;
@@ -163,7 +142,7 @@ int main(){
                 }
 
             }
-            else if (single == "||" && !wordlist.empty()){
+            else if (single == "||" && !wordlist.empty()){ //will execute if the first command did not execute
                 if(first){
                     previous = system(wordlist);
                     first = false;
@@ -178,14 +157,14 @@ int main(){
                 }
             }
 
-            else if (first && commands.size() == 1){
+            else if (first && commands.size() == 1){ //if theres only 1 command typed in with no connectors
                 wordlist.push_back(commands.at(i));
                 previous = system(wordlist);
                 wordlist.clear();
             }
             else {
-                wordlist.push_back(commands.at(i));
-            }*/
+                wordlist.push_back(commands.at(i)); //pushes the commands from commands vector one at a time to execute
+            }
         }
         commands.clear();
     }
