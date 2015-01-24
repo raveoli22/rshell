@@ -1,0 +1,109 @@
+Script started on Sat 24 Jan 2015 12:34:36 AM PST
+~
+yli066@hammer $ ls[K[Kls
+[0m[01;34mAssignment_4[0m/  assn1.asm  [01;34mcs10[0m/  [01;34mcs_10[0m/  [01;34mCS100[0m/  [01;34mCS61[0m/  [01;34mCS_61[0m/  [01;34mDesktop[0m/  [01;34mDocuments[0m/  [01;34mDownloads[0m/  [01;34mEEEEE[0m/  main.cpp  [01;34mMusic[0m/  [01;32mperc_functions.o[0m*  [01;34mPictures[0m/  [01;34mProgramAssignments[0m/  [01;34mPublic[0m/  [01;34mTemplates[0m/  [01;34mVideos[0m/
+[m~
+yli066@hammer $ cd CS100
+~/CS100
+yli066@hammer $ ls
+[0m[01;34mrshell[0m/
+[m~/CS100
+yli066@hammer $ cd rshell
+~/CS100/rshell
+yli066@hammer $ ls[K[Kls
+[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtest[0m/
+[m~/CS100/rshell
+yli066@hammer $ cd s[Ks[Ks[Ksrc
+~/CS100/rshell/src
+yli066@hammer $ ls[K[Kls
+[0m[01;32ma.out[0m*  main.cpp
+[m~/CS100/rshell/src
+yli066@hammer $ cd ..
+~/CS100/rshell
+yli066@hammer $ ls
+[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtest[0m/
+[m~/CS100/rshell
+yli066@hammer $ g[Kmake
+mkdir -p ./bin
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell
+~/CS100/rshell
+yli066@hammer $ bin/rshell
+yli066@hammer.cs.ucr.edu$ls
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::replace
+Aborted
+~/CS100/rshell
+yli066@hammer $ bin/rshell
+yli066@hammer.cs.ucr.edu$ls;ls;ls;
+^C
+~/CS100/rshell
+yli066@hammer $ ls #tests for ls command
+[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtest[0m/
+[m~/CS100/rshell
+yli066@hammer $ bin/rshell
+yli066@hammer.cs.ucr.edu$ls #tests ls command
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::replace
+Aborted
+~/CS100/rshell
+yli066@hammer $ bin./[K[K/rshell #command does not work
+yli066@hammer.cs.ucr.edu$ls
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::replace
+Aborted
+~/CS100/rshell
+yli066@hammer $ s[Ks[Kbin/rshell #command does not work[K #command does not work[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ks[Ks[Kla[K[Kgit add test[K[K[K[K[K[K[K[K[K[K[K[Kls
+[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtest[0m/
+[m~/CS100/rshell
+yli066@hammer $ cd test
+~/CS100/rshell/test
+yli066@hammer $ ls
+exec.script
+~/CS100/rshell/test
+yli066@hammer $ cd ..
+~/CS100/rshell
+yli066@hammer $ git add test/exec.script
+~/CS100/rshell
+yli066@hammer $ git add test
+~/CS100/rshell
+yli066@hammer $ git commit -m"[K "added test cases"
+[exec cee160d] added test cases
+ Committer: Yuxuan Li <yli066@hammer.cs.ucr.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+If the identity used for this commit is wrong, you can fix it with:
+
+    git commit --amend --author='Your Name <you@example.com>'
+
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test/exec.script
+~/CS100/rshell
+yli066@hammer $ ls[K[Kgit push origin ec[Kxec
+Counting objects: 5, done.
+Delta compression using up to 48 threads.
+Compressing objects:  50% (1/2)   Compressing objects: 100% (2/2)   Compressing objects: 100% (2/2), done.
+Writing objects:  25% (1/4)   Writing objects:  50% (2/4)   Writing objects:  75% (3/4)   Writing objects: 100% (4/4)   Writing objects: 100% (4/4), 318 bytes, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To https://raveoli22@github.com/raveoli22/rshell
+   c58ac39..cee160d  exec -> exec
+~/CS100/rshell
+yli066@hammer $ git branch merge exec [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmerge exec master
+Already up-to-date. Yeeah!
+~/CS100/rshell
+yli066@hammer $ ls
+[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtest[0m/
+[m~/CS100/rshell
+yli066@hammer $ cd test
+~/CS100/rshell/test
+yli066@hammer $ ls
+exec.script
+~/CS100/rshell/test
+yli066@hammer $ git add exec.script[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+
+Script done on Sat 24 Jan 2015 12:38:18 AM PST
