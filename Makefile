@@ -2,7 +2,7 @@
 
 COMPILER = g++
 CFLAGS = -Wall -Werror -ansi -pedantic
-FILEPATH = ./main.cpp
+FILEPATH = ./src/main.cpp
 OUTPATH = ./bin/rshell
 
 #Targets
