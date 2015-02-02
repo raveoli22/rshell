@@ -101,13 +101,16 @@ void fixline(string &input){
 int main(){
     char hostname[200];
     char username[200];
+    string endmark = "end";
     vector <char*> commands;
 
     vector <char*> wordlist;
     string single;
     string userinput;
     bool first = true;
-    bool previous = false;
+    bool previous = true;
+    bool test = true;
+    bool run = true;
 
     gethostname(hostname, 200);
     getlogin_r(username,200);
@@ -117,68 +120,100 @@ int main(){
         getline(std::cin,userinput);
 
         fixline(userinput);
-        //cout << userinput;
+       //cout << userinput;
 
         char *token = std::strtok(const_cast<char*>(userinput.c_str()), " ");
         while (token != NULL){
             commands.push_back(token);
             token = std::strtok(NULL, " ");
         }
-       for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
+
+
+
+       // for (int i = 0; i < commands.size(); i++){
+        //    cout << commands.at(i) << endl;
+       // }
+
+
+        for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
 
             single = commands.at(i);
+
             if (single == "exit"){ //exits out of the shell if exit is found
                 exit(0);
             }
+
             else if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
                 if (first){ //if its the first command
-                    previous = system(wordlist);
+                    test = system(wordlist);
                     first = false;
                     wordlist.clear();
                 }
-                previous = system(wordlist);
+                test = system(wordlist);
                 wordlist.clear();
 
             }
+
             else if (single == "&&" && !wordlist.empty()){ //will execute if the first command is successfully executed
                 if(first){
-                    previous = system(wordlist);
+                    test = system(wordlist);
                     first = false;
                     wordlist.clear();
+                    if (!test){
+                        perror("first command did not execute");
+                        wordlist.clear();
+                        break;
+                    }
                 }
-                else if (previous){
+
+                else if (test){
                     previous = system(wordlist);
                     wordlist.clear();
                 }
-                else {
+                else if (!test){
                     perror("first command did not execute");
                 }
 
             }
+
             else if (single == "||" && !wordlist.empty()){ //will execute if the first command did not execute
-                if(first){
-                    previous = system(wordlist);
+
+                if (first){
+                    test = system(wordlist);
                     first = false;
                     wordlist.clear();
                 }
-                else if (!previous){
-                    previous = system(wordlist);
-                    wordlist.clear();
+                else if (test){
+                    perror("first command ran so second cannot");
                 }
-                else {
-                    perror("first command did execute so second cannot");
+
+                else if(!test){
+                    test = system(wordlist);
+                    wordlist.clear();
                 }
             }
 
-            else if (first && commands.size() == 1){ //if theres only 1 command typed in with no connectors
+            else if (commands.size() == 1){ //if theres only 1 command typed in with no connectors
                 wordlist.push_back(commands.at(i));
-                previous = system(wordlist);
+                test = system(wordlist);
                 wordlist.clear();
             }
+
+
             else {
                 wordlist.push_back(commands.at(i)); //pushes the commands from commands vector one at a time to execute
+                if (i == commands.size()-1){
+                    test = system(wordlist);
+                    wordlist.clear();
+                }
             }
         }
+
+
+
+
+
+
 
         commands.clear();
     }
