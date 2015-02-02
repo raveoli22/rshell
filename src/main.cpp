@@ -101,21 +101,18 @@ void fixline(string &input){
 int main(){
     char hostname[200];
     char username[200];
-    string endmark = "end";
+    //string endmark = "end";
     vector <char*> commands;
 
     vector <char*> wordlist;
     string single;
     string userinput;
-    bool first = true;
-    bool previous = true;
-    bool test = true;
-    bool run = true;
 
     gethostname(hostname, 200);
     getlogin_r(username,200);
 
     while (1){
+        bool orflag = false;
         std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
         getline(std::cin,userinput);
 
@@ -131,13 +128,22 @@ int main(){
 
 
        // for (int i = 0; i < commands.size(); i++){
-        //    cout << commands.at(i) << endl;
-       // }
+         //   cout << commands.at(i) << endl;
+        //}
 
 
         for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
 
+            bool first = true;
+            bool test = true;
             single = commands.at(i);
+
+            if (single == "false"){
+                test = false;
+            }
+            if (single == "true"){
+                test = true;
+            }
 
             if (single == "exit"){ //exits out of the shell if exit is found
                 exit(0);
@@ -167,7 +173,7 @@ int main(){
                 }
 
                 else if (test){
-                    previous = system(wordlist);
+                    test = system(wordlist);
                     wordlist.clear();
                 }
                 else if (!test){
@@ -180,14 +186,20 @@ int main(){
 
                 if (first){
                     test = system(wordlist);
+                    if (test){
+                        orflag = true;
+                    }
                     first = false;
                     wordlist.clear();
                 }
                 else if (test){
                     perror("first command ran so second cannot");
+                    wordlist.clear();
+                    break;
                 }
 
                 else if(!test){
+
                     test = system(wordlist);
                     wordlist.clear();
                 }
@@ -203,8 +215,15 @@ int main(){
             else {
                 wordlist.push_back(commands.at(i)); //pushes the commands from commands vector one at a time to execute
                 if (i == commands.size()-1){
-                    test = system(wordlist);
-                    wordlist.clear();
+                    if (!orflag){
+                        test = system(wordlist);
+                        wordlist.clear();
+                    }
+                    else if(orflag){
+                        perror("First command ran so second cannot");
+                        wordlist.clear();
+                        break;
+                    }
                 }
             }
         }
