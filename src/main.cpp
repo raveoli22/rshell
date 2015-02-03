@@ -51,7 +51,7 @@ void fixline(string &input){
 
     size_t place = input.find("#");
     if (place != 1 && place != 0){
-        input.substr(0,place);
+        input = input.substr(0,place);
     }
 
     //cout << "not in loop";
@@ -127,34 +127,32 @@ int main(){
 
 
 
-       // for (int i = 0; i < commands.size(); i++){
-         //   cout << commands.at(i) << endl;
-        //}
+ /*      for (int i = 0; i < commands.size(); i++){
+           cout << commands.at(i) << endl;
+       }*/
 
-
+        bool first = true;
+        bool test = true; 
         for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
 
-            bool first = true;
-            bool test = true;
+            //bool first = true;
+            //bool test = true;
             single = commands.at(i);
 
             if (single == "false"){
                 test = false;
             }
-            if (single == "true"){
+            /*if (single == "true"){
                 test = true;
-            }
-
-            if (single == "exit"){ //exits out of the shell if exit is found
-                exit(0);
-            }
+		first = false;
+            }*/
 
             else if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
                 if (first){ //if its the first command
                     test = system(wordlist);
                     first = false;
                     wordlist.clear();
-                }
+                } //will always execute the command before it
                 test = system(wordlist);
                 wordlist.clear();
 
@@ -162,17 +160,17 @@ int main(){
 
             else if (single == "&&" && !wordlist.empty()){ //will execute if the first command is successfully executed
                 if(first){
-                    test = system(wordlist);
+                    test = system(wordlist); //if its the first command in the line
                     first = false;
                     wordlist.clear();
-                    if (!test){
+                    if (!test){ //if the previous failed
                         perror("first command did not execute");
                         wordlist.clear();
                         break;
                     }
                 }
 
-                else if (test){
+                else if (test){ //if the previous command passed
                     test = system(wordlist);
                     wordlist.clear();
                 }
@@ -184,7 +182,7 @@ int main(){
 
             else if (single == "||" && !wordlist.empty()){ //will execute if the first command did not execute
 
-                if (first){
+                if (first) //if its the first command in line{
                     test = system(wordlist);
                     if (test){
                         orflag = true;
@@ -192,18 +190,23 @@ int main(){
                     first = false;
                     wordlist.clear();
                 }
-                else if (test){
+                else if (test){ //if the previous command passed
                     perror("first command ran so second cannot");
                     wordlist.clear();
                     break;
                 }
 
-                else if(!test){
+                else if(!test){ //if the previous command did not pass
 
                     test = system(wordlist);
                     wordlist.clear();
                 }
             }
+
+	    else if (single == "exit" && !orflag){
+		exit(0); //exit rshell
+            }
+
 
             else if (commands.size() == 1){ //if theres only 1 command typed in with no connectors
                 wordlist.push_back(commands.at(i));
@@ -219,7 +222,7 @@ int main(){
                         test = system(wordlist);
                         wordlist.clear();
                     }
-                    else if(orflag){
+                    else if(orflag){ //orflag used to see if an || connector is used
                         perror("First command ran so second cannot");
                         wordlist.clear();
                         break;
@@ -227,16 +230,8 @@ int main(){
                 }
             }
         }
-
-
-
-
-
-
-
-        commands.clear();
+	commands.clear(); //clear command list
     }
 
 }
-
 
