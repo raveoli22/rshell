@@ -132,22 +132,22 @@ int main(){
        }*/
 
         bool first = true;
-        bool test = true; 
+        bool test = true;
         for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
 
             //bool first = true;
             //bool test = true;
             single = commands.at(i);
 
-            if (single == "false"){
+/*            if (single == "false"){
                 test = false;
             }
-            /*if (single == "true"){
+            if (single == "true"){
                 test = true;
 		first = false;
             }*/
 
-            else if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
+            if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
                 if (first){ //if its the first command
                     test = system(wordlist);
                     first = false;
@@ -182,7 +182,7 @@ int main(){
 
             else if (single == "||" && !wordlist.empty()){ //will execute if the first command did not execute
 
-                if (first) //if its the first command in line{
+                if (first) { //if its the first command in line{
                     test = system(wordlist);
                     if (test){
                         orflag = true;
@@ -203,8 +203,8 @@ int main(){
                 }
             }
 
-	    else if (single == "exit" && !orflag){
-		exit(0); //exit rshell
+	        else if (single == "exit" && !orflag){
+		        exit(0); //exit rshell
             }
 
 
