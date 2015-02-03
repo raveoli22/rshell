@@ -31,8 +31,7 @@ Requirements for the program:
 
 #Bugs/Limitations/Issues
 
--the connectors do not work correctly, only the ; work correctly
--many test cases does not work
+-if the tab is entered before a command then the command will not work
 
 Things not to do:
 
