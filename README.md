@@ -14,6 +14,7 @@ Run this program in a linux terminal, however, it is not guarantee to run correc
 
 Steps to running program:
 For HW0:
+
 $git clone https://github.com/raveoli22/rshell.git
 
 $cd rshell
@@ -25,6 +26,7 @@ $make
 $bin/rshell
 
 For HW1: 
+
 $git clone https://github.com/raveoli22/rshell.git
 
 $cd rshell
@@ -48,6 +50,7 @@ Requirements for the program:
 
 #Bugs/Limitations/Issues
 For hw0:
+
 -if the tab is entered before a command then the command will not work
 
 Things not to do:
@@ -56,7 +59,12 @@ Things not to do:
 
 For hw1:
 
--If you input a 1 character directory that is not within the current working directory,the program will not report an error but it will not do anything either. 
+-Many of the special cases are bugs, for example, if you input special characters such as '//' or ';' or '=' or '&' or '.....' the program will go to a seg fault instead of creating an error message.
+-segfaults will occur depending on what kind of special character you input.
+-special characters can also cause program disfunctionalities other than segfaults.
+-although special characters do not work, all flags work in every combination, and all of the different combinations of directories work. Everything works fine except for special character cases.
+-The only time where bugs can be found is when you mix special characters into the commands.
+
 
 
 
