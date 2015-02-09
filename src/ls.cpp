@@ -153,7 +153,12 @@ int main(int argc, char** argv){
 	
 	for (int i = 1; i < size; i++){
 		flagstring = argv[i];
+
 		if (flagstring[0] == '-'){
+			if (flagstring.size() == 1){
+				cout << "ERROR OCCURRED";
+				exit(1);
+			}
 			flags = argv[i];
 			for (int j = 1; flags[j] != '\0'; j++){
 				if (flags[j] == 'a'){
