@@ -59,7 +59,7 @@ Things not to do:
 
 For hw1:
 
--Many of the special cases are bugs, for example, if you input special characters such as '//' or ';' or '=' or '&' or '.....' the program will go to a seg fault instead of creating an error message.
+-many of the special cases are bugs, for example, if you input special characters such as '//' or ';' or '=' or '&' or '.....' the program will go to a seg fault instead of creating an error message.
 
 -segfaults will occur depending on what kind of special character you input.
 
@@ -67,7 +67,7 @@ For hw1:
 
 -although special characters do not work, all flags work in every combination, and all of the different combinations of directories work. Everything works fine except for special character cases.
 
--The only time where bugs can be found is when you mix special characters into the commands.
+-the only time where bugs can be found is when you mix special characters into the commands.
 
 
 
