@@ -1,21 +1,27 @@
 Script started on Sun 08 Feb 2015 11:20:31 PM PST
-~
+~
+
 yli066@hammer $ cd CS100
-~/CS100
+~/CS100
+
 yli066@hammer $ cd rshell
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ make
 mkdir -p ./bin
 g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell 
 g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls 
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
-yli066@hammer $ bin/ls -a
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -a #-a flag works correctly
 . .. .git bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
-yli066@hammer $ bin/ls -a[Kl
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -a -l #-a and -l works correctly
 total: 40
 drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs18545Feb  3 11:15     LICENSE
@@ -24,8 +30,9 @@ drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs1964 Feb  8 23:14     README.md
 drwx------2    csmajs4096 Feb  8 23:14     src
 drwx------2    csmajs4096 Feb  3 12:06     test
-~/CS100/rshell
-yli066@hammer $ bin/ls -l[KR
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -l #-l flag works correctly
 .: 
 bin LICENSE ls.script Makefile README.md src test 
 ./bin: 
@@ -34,8 +41,9 @@ ls rshell
 ls.cpp main.cpp 
 ./test: 
 exec.script 
-~/CS100/rshell
-yli066@hammer $ bin/ls -R[KalR
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -R # -R works correctly
 .: 
 total: 52
 drwx------6    csmajs4096 Feb  8 23:16     .
@@ -745,7 +753,8 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -alR[C[K[KRl
 .: 
 total: 52
@@ -1456,7 +1465,8 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -aRl[K[K -l -R
 .: 
 total: 84
@@ -2167,7 +2177,8 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -a -l -R[1P[1P[1P
 .: 
 total: 104
@@ -2189,19 +2200,22 @@ total: 16
 ./   test: 
 total: 8
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -l -R test
 test: 
 total: 8
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -l -R test[K[K[K[Kl[Ksrc
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -l -R test[K[K[K[Kl[Ksrc #flags work with folders
 src: 
 total: 16
 -rw-------1    csmajs6591 Feb  8 23:14     ls.cpp
 -rw-------1    csmajs6738 Feb  3 11:22     main.cpp
-~/CS100/rshell
-yli066@hammer $ bin/ls -l -R src test
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -l -R src test #flags work with multiple folders
 src:
 total: 16
 -rw-------1    csmajs6591 Feb  8 23:14     ls.cpp
@@ -2209,8 +2223,9 @@ total: 16
 test :
 total: 8
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -l -R src test[C[C[4h-[4l[4ha[4l[4h [4l
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -l -R src test #flags work with both multiple folders
 src:
 total: 24
 drwx------2    csmajs4096 Feb  8 23:14     .
@@ -2222,8 +2237,9 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -a -l -R src test[1P[1P[1P[4hl[4l
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -a -l -R src test #all three flags work
 src:
 total: 24
 drwx------2    csmajs4096 Feb  8 23:14     .
@@ -2235,8 +2251,9 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -al -R src test[1P[1P[4hR[4l[C[C[C[1P[4hl[4l
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -al -R src test #flags work with different combinations
 src:
 total: 16
 -rw-------1    csmajs6591 Feb  8 23:14     ls.cpp
@@ -2244,29 +2261,36 @@ total: 16
 test :
 total: 8
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -R -l src test[K[K[K[K[K[K[K[K[K[K[K[K[K[Krc t[K[K[K[K[K src test
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -R -l src test[K[K[K src test #ls works with flags in between directories
 src:
 ls.cpp main.cpp 
 test:
 exec.script 
-~/CS100/rshell
-yli066@hammer $ bin/ls src test[K[K[K[K
+~/CS100/rshell
+
+yli066@hammer $ bin/ls src test #ls works with just directories listed
 ls.cpp main.cpp 
-~/CS100/rshell
-yli066@hammer $ bin/ls src [K[K[K[K..[K
+~/CS100/rshell
+
+yli066@hammer $ bin/ls src #ls works with one directory
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ..
 lab rshell 
-~/CS100/rshell
-yli066@hammer $ bin/ls ....
+~/CS100/rshell
+
+yli066@hammer $ bin/ls .... #seg faults with 4 dots
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ....[K[K[K[K./
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
-yli066@hammer $ bin/ls ./ R[K-R
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ./ R[K-R #ls works with "./ -R" inputed
 ./: 
 bin LICENSE ls.script Makefile README.md src test 
 ./bin: 
@@ -2275,8 +2299,9 @@ ls rshell
 ls.cpp main.cpp 
 ./test: 
 exec.script 
-~/CS100/rshell
-yli066@hammer $ bin/ls ./ -R[Kl
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ./ -Rl #ls works with ./ and flags 
 total: 104
 drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs18545Feb  3 11:15     LICENSE
@@ -2285,65 +2310,74 @@ drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs1964 Feb  8 23:14     README.md
 drwx------2    csmajs4096 Feb  8 23:14     src
 drwx------2    csmajs4096 Feb  3 12:06     test
-~/CS100/rshell
-yli066@hammer $ bin/ls ./ -l[Ka
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ./ -l #ls works with ./ -l
 . .. .git bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
-yli066@hammer $ bin/ls ./ -a[K[K[K[K[Ktest/[K/main.cpp
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ./ -a[K[K[K[K[Ktest/[K/main.cpp #ls seg faults with filename inputed
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls test/main.cpp[K[K[K[K[K[K[K[K[K[K[K[K[Krshell
-Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls rshell[K[K[K[K[K[K
+~/CS100/rshell
+
+yli066@hammer $ bin/ls rshell #ls works with listing dir name
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ cd ..
-~/CS100
+~/CS100
+
 yli066@hammer $ bin[K[K[Kcd rshell
-~/CS100/rshell
-yli066@hammer $ bin/rshell /
-yli066@hammer.cs.ucr.edu$^[[A^[[B^[[A            ^C
-~/CS100/rshell
-yli066@hammer $ bin/ls /
+~/CS100/rshell
+
+yli066@hammer $ bin/ls / #ls does not work with '/' special char
 boot bin class cgroup C:\nppdf32Log\debuglog.txt dev etc extra home lib64 lost+found lib mnt media misc net opt proc root srv sys selinux sbin tmp usr var 
-~/CS100/rshell
-yli066@hammer $ bin/ls //
+~/CS100/rshell
+
+yli066@hammer $ bin/ls // #ls does not work with '//' special char
 boot bin class cgroup C:\nppdf32Log\debuglog.txt dev etc extra home lib64 lost+found lib mnt media misc net opt proc root srv sys selinux sbin tmp usr var 
-~/CS100/rshell
-yli066@hammer $ bin/ls test src bin
+~/CS100/rshell
+
+yli066@hammer $ bin/ls test src bin #ls works with multiple dirs
 test:
 exec.script 
 src:
 ls.cpp main.cpp 
 bin:
 ls rshell 
-~/CS100/rshell
-yli066@hammer $ bin/ls .//
+~/CS100/rshell
+
+yli066@hammer $ bin/ls .// #ls works with './/' special char
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
-yli066@hammer $ bin/ls :::::::::::
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ::::::::::: #does not work with ':' special char
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/;s [K[K[Kls ...........................
+~/CS100/rshell
+
+yli066@hammer $ bin/;s [K[K[Kls ........................... #does not work with ..... special char
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls ...........................[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K/...
+~/CS100/rshell
+
+yli066@hammer $ bin/ls .........................../... #does not work with these special chars
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls ........./...[K[K[K[K[K[K[K[K[K[K[K[K[Ktest -a -l 
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ........./...test -a -l  #works with test and flags 
 total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls test -a -l -R
+~/CS100/rshell
+
+yli066@hammer $ bin/ls test -a -l -R #works with all flags together
 test: 
 total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls test -a -l -R[4hs[4l[4hr[4l[4hc[4l[4h [4l
 test:
 total: 16
@@ -2356,19 +2390,24 @@ drwx------2    csmajs4096 Feb  8 23:14     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rw-------1    csmajs6591 Feb  8 23:14     ls.cpp
 -rw-------1    csmajs6738 Feb  3 11:22     main.cpp
-~/CS100/rshell
-yli066@hammer $ bin/ls pppppp
+~/CS100/rshell
+
+yli066@hammer $ bin/ls pppppp #does not work with speccial char p
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls abcdefghijklmo[Knop
+~/CS100/rshell
+
+yli066@hammer $ bin/ls abcdefghijklmo[Knop #does not work with speccial chars
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls -a-a-a-a
-ERROR OCCURRED~/CS100/rshell
-yli066@hammer $ bin/ls -a -a -a 
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -a-a-a-a #does not work, error check successful with this case
+ERROR OCCURRED~/CS100/rshell
+
+yli066@hammer $ bin/ls -a -a -a #works with 3 seperate of the same flags
 . .. .git bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
-yli066@hammer $ bin/ls -l -l -l
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -l -l -l #works with same seperate of same flags
 total: 104
 drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs18545Feb  3 11:15     LICENSE
@@ -2377,8 +2416,9 @@ drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs1964 Feb  8 23:14     README.md
 drwx------2    csmajs4096 Feb  8 23:14     src
 drwx------2    csmajs4096 Feb  3 12:06     test
-~/CS100/rshell
-yli066@hammer $ bin/ls -R -R -R -R
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -R -R -R -R #works with same flags that are seperated
 .: 
 bin LICENSE ls.script Makefile README.md src test 
 ./bin: 
@@ -2387,25 +2427,32 @@ ls rshell
 ls.cpp main.cpp 
 ./test: 
 exec.script 
-~/CS100/rshell
-yli066@hammer $ bin/ls -l-l-l-l
-ERROR OCCURRED~/CS100/rshell
-yli066@hammer $ bin/ls ././;/.
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -l-l-l-l #error check successufl
+ERROR OCCURRED~/CS100/rshell
+
+yli066@hammer $ bin/ls ././;/. #case failed
 bin LICENSE ls.script Makefile README.md src test 
 bash: /.: is a directory
-~/CS100/rshell
-yli066@hammer $ bin/ls -----------------------
-ERROR OCCURRED~/CS100/rshell
-yli066@hammer $ bin/ls oo-oo[K[Kabad -R
+~/CS100/rshell
+
+yli066@hammer $ bin/ls ----------------------- #error check successful
+ERROR OCCURRED~/CS100/rshell
+
+yli066@hammer $ bin/ls oo-oo -R #seg fault occured, case failed
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls 673829
+~/CS100/rshell
+
+yli066@hammer $ bin/ls 673829 #segfault occured
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls a
+~/CS100/rshell
+
+yli066@hammer $ bin/ls a #segfault occured,case failed
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls -a -lR 
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -a -lR  #case works with all tags
 .: 
 total: 116
 drwx------6    csmajs4096 Feb  8 23:16     .
@@ -3115,24 +3162,31 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls lsls
+~/CS100/rshell
+
+yli066@hammer $ bin/ls lsls #error check failed
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls -ab[K[K[K......
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -ab...... #error check failed for special char case
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls special characters
+~/CS100/rshell
+
+yli066@hammer $ bin/ls special characters #error check failed for special case
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls -A
-ERROR OCCURRED~/CS100/rshell
-yli066@hammer $ bin/ls qqq
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -A #error check successful
+ERROR OCCURRED~/CS100/rshell
+
+yli066@hammer $ bin/ls qqq #error check failed
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ////////
 boot bin class cgroup C:\nppdf32Log\debuglog.txt dev etc extra home lib64 lost+found lib mnt media misc net opt proc root srv sys selinux sbin tmp usr var 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -R -R -R
 .: 
 bin LICENSE ls.script Makefile README.md src test 
@@ -3142,16 +3196,20 @@ ls rshell
 ls.cpp main.cpp 
 ./test: 
 exec.script 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls folder s
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ;;;;;;;;;;;;
 bash: syntax error near unexpected token `;;'
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls """"""
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ;.;.;.
 bin LICENSE ls.script Makefile README.md src test 
 bash: .: filename argument required
@@ -3160,95 +3218,123 @@ bash: .: filename argument required
 .: usage: . filename [arguments]
 bash: .: filename argument required
 .: usage: . filename [arguments]
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ,,,,,,,
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls %%%%%
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls **
 bin:
 ls rshell 
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ++++
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls !!
 bin/ls bin/ls ++++
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ k[Kbin/ls 
 bin/       .git/      LICENSE    ls.script  Makefile   README.md  src/       test/
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls lolololol
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls *
 bin:
 ls rshell 
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls vvvvvv
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ^^^^
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls |||||[K[K[K[K
+~/CS100/rshell
+
+yli066@hammer $ bin/ls |||||
 loop $ ^C
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls p[]
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ()
 loop $ ^C
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls (
 bash: syntax error near unexpected token `newline'
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls )
 bash: syntax error near unexpected token `)'
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls @
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls #@@@@
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls
 bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls &
 [1] 36208
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin LICENSE ls.script Makefile README.md src test 
 ^C
 [1]+  Done                    bin/ls
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls &&
 loop $ ^C
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls oooooooooop
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls !!!!
 bin/ls bin/ls oooooooooopbin/ls oooooooooop
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ l[Kbin/ls ==[K
+~/CS100/rshell
+
+yli066@hammer $ l[Kbin/ls ==
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls =====
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls nn
 Segmentation fault
-~/CS100/rshell
-yli066@hammer $ bin/ls s[Ks[Kqqqqq
+~/CS100/rshell
+
+yli066@hammer $ bin/ls sqqqqq
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -alR
 .: 
 total: 152
@@ -3959,10 +4045,12 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -a
 . .. .git bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -l
 total: 172
 drwx------2    csmajs4096 Feb  8 23:17     bin
@@ -3972,8 +4060,9 @@ drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs1964 Feb  8 23:14     README.md
 drwx------2    csmajs4096 Feb  8 23:14     src
 drwx------2    csmajs4096 Feb  3 12:06     test
-~/CS100/rshell
-yli066@hammer $ bin/ls -R -R - [KR
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -R -R -R
 .: 
 bin LICENSE ls.script Makefile README.md src test 
 ./bin: 
@@ -3982,8 +4071,9 @@ ls rshell
 ls.cpp main.cpp 
 ./test: 
 exec.script 
-~/CS100/rshell
-yli066@hammer $ in[K[Kbin/ls -R [KRRRRRR
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -R 
 .: 
 bin LICENSE ls.script Makefile README.md src test 
 ./bin: 
@@ -3992,10 +4082,12 @@ ls rshell
 ls.cpp main.cpp 
 ./test: 
 exec.script 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -aaaaaaaaaaaaaaaaa
 . .. .git bin LICENSE ls.script Makefile README.md src test 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -llllllllllll
 total: 172
 drwx------2    csmajs4096 Feb  8 23:17     bin
@@ -4005,7 +4097,8 @@ drwx------2    csmajs4096 Feb  8 23:17     bin
 -rw-------1    csmajs1964 Feb  8 23:14     README.md
 drwx------2    csmajs4096 Feb  8 23:14     src
 drwx------2    csmajs4096 Feb  3 12:06     test
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -aaaaaalllllllllllllllRRRRRR
 .: 
 total: 184
@@ -4716,7 +4809,8 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -RRRRRaaaaaaaalllllll
 .: 
 total: 216
@@ -5427,9 +5521,11 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -G
-ERROR OCCURRED~/CS100/rshell
+ERROR OCCURRED~/CS100/rshell
+
 yli066@hammer $ bin/ls -a -R -l
 .: 
 total: 248
@@ -6140,7 +6236,8 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -llllll -R
 .: 
 total: 268
@@ -6162,16 +6259,19 @@ total: 16
 ./   test: 
 total: 8
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -aaaaaaaa -[K[K[K[K[K[K[K[K[K[K[Ktest -aaaaaa 
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -aaaaaaaa test -aaaaaa 
 . .. exec.script 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -lllllla test
 total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -aRl -lRa -a
 .: 
 total: 280
@@ -6882,8 +6982,9 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
-yli066@hammer $ bin/ls -alRRRRRR[K[K[K[K[K[K[KRRRRRRRla
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -alRRRRRRRRRRRRRla
 .: 
 total: 312
 drwx------6    csmajs4096 Feb  8 23:16     .
@@ -7593,20 +7694,26 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls op[K[Ks[Ks[K~
 Assignment_4 assn1.asm CS100 cs_10 cs10 CS_61 C:\nppdf32Log\debuglog.txt CS61 Documents Downloads Desktop EEEEE main.cpp Music Public Pictures perc_functions.o ProgramAssignments test.script Templates Videos 
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls xxxxxxx
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -xxxx
-ERROR OCCURRED~/CS100/rshell
+ERROR OCCURRED~/CS100/rshell
+
 yli066@hammer $ bin/ls $$$
 Segmentation fault
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -RLA
-ERROR OCCURRED~/CS100/rshell
+ERROR OCCURRED~/CS100/rshell
+
 yli066@hammer $ bin/ls -Rla[K
 .: 
 total: 332
@@ -7628,26 +7735,30 @@ total: 16
 ./   test: 
 total: 8
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls ;[K-aaaaaa test -lll
 total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -[Ksrc -aaaaaaa -llll
 total: 24
 drwx------2    csmajs4096 Feb  8 23:14     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rw-------1    csmajs6591 Feb  8 23:14     ls.cpp
 -rw-------1    csmajs6738 Feb  3 11:22     main.cpp
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -llll [K[K[K test -R[Kaaaaaa
 total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ ex[Kb[K[Kbin/ls -ll test src -a
 test:
 total: 16
@@ -7660,8 +7771,9 @@ drwx------2    csmajs4096 Feb  8 23:14     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rw-------1    csmajs6591 Feb  8 23:14     ls.cpp
 -rw-------1    csmajs6738 Feb  3 11:22     main.cpp
-~/CS100/rshell
-yli066@hammer $ bin/ls -llll -[Ksrc test [K[K[K[K[K-aaa test -R
+~/CS100/rshell
+
+yli066@hammer $ bin/ls -llll src test -aaa test -R
 src:
 total: 24
 drwx------2    csmajs4096 Feb  8 23:14     .
@@ -7673,7 +7785,8 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ bin/ls -a bin -llll -RR test
 bin:
 total: 104
@@ -7686,9 +7799,11 @@ total: 16
 drwx------2    csmajs4096 Feb  3 12:06     .
 drwx------6    csmajs4096 Feb  8 23:16     ..
 -rwxr-xr-x1    csmajs5751 Feb  3 12:04     exec.script
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ exi[K[K[K#Testcases done
-~/CS100/rshell
+~/CS100/rshell
+
 yli066@hammer $ exit
 exit
 
