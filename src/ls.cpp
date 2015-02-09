@@ -23,41 +23,10 @@
 using namespace std;
 string perm(mode_t info);
 void print(vector<string>filenames,vector<bool>flags,string dir);
-
-
+void Rfunc(vector<string>filename,vector<bool> flagbool,string pathname);
 bool sortfunc(string a, string b){ 
 	return tolower(a[0]) < tolower(b[0]);
 }
-
-	
-
-/*void Rflag(vector<string> filename,vector<bool> flagboolz,string dir){
-	string cpath;
-	struct stat files;
-	string newdir;
-	vector<string> newfilename;
-
-	for (size_t j = 0; j < filename.size(); j++){
-		cpath = dir + "/" + filename.at(j);
-		if (stat(cpath.c_str(),&files) != 0) {
-			perror("ERROR OCCURRED TWO");
-			exit(1);
-		}
-		if (S_ISDIR(files.st_mode) && filename.at(j) != "." && filename.at (j) != ".."){
-			cout << "in loop one" << endl;
-			newdir = filename.at(j);
-			DIR *dirp = opendir(filename.at(j).c_str());
-			dirent *direntp;
-			while ((direntp = readdir(dirp))){	
-				newfilename.push_back(direntp -> d_name);
-			}
-			cout << "called again";
-			Rflag(newfilename,flagboolz,newdir);				
-		}
-				
-	}
-	print(newfilename,flagboolz,newdir);
-}*/
 
 void print(vector<string> filename,vector<bool> flagbool,string dir){
 	struct stat filestuff; 
@@ -235,41 +204,11 @@ int main(int argc, char** argv){
 			filename.clear(); 
 		} // if there is more then 1 directory passed in
 		else if (flagbool.at(2)){
-			struct stat files;
-			vector <string> newfilename;
-			string path;
-			sort(filename.begin(),filename.end(),sortfunc);
+			//string realpath;
+			sort(filename.begin(),filename.end(),sortfunc); 
 			cout << pathname.at(i) << ": " << endl;
 			print (filename,flagbool,pathname.at(i));
-			for (size_t k = 0; k < filename.size(); k++){
-				path = pathname.at(i) + "/" + filename.at(k); 
-				//have to trace the path back to original directory 
-				if (stat(path.c_str(),&files) != 0){
-					perror("ERROR HAPPENED 11");
-					exit(1); 
-				}		
-				if (S_ISDIR(files.st_mode) && filename.at(k) != "." && filename.at(k) != ".." ){
-				//tests to see whether if the file is a directory or not 
-					DIR *dirp = opendir(filename.at(k).c_str());
-					dirent *direntp;
-					while ((direntp = readdir(dirp))){
-						if (!flagbool.at(0) && direntp -> d_name[0] != '.'){
-							newfilename.push_back(direntp -> d_name);
-							//if it is a directory, then push onto new vector
-						}
-						else if (flagbool.at(0)){
-							newfilename.push_back(direntp -> d_name); 
-							//if -a flag is there or not along with -R
-						}
-					}
-					closedir(dirp); //closes 
-	 				cout << "./" <<  filename.at(k) << ": " << endl;
-					print (newfilename,flagbool,filename.at(k)); 
-					//print all sub-directories 
-					newfilename.clear();				
-				}
-			}
-		}
+			Rfunc(filename,flagbool,pathname.at(i));}
 		else { 
 			sort(filename.begin(),filename.end(),sortfunc);
 			print(filename,flagbool,pathname.at(i));
@@ -277,17 +216,56 @@ int main(int argc, char** argv){
 		} //if there is only 1 directory listed
 		
 	}		
-	
-	/*for (size_t i = 0; i < filename.size(); i++){
-		cout << filename.at(i) << "test"  << endl;
-	}*/	
-	
-/*
-	for (size_t i = 0; i < flagbool.size(); i++){
-		cout << flagbool.at(i) << endl;
+}
+void Rfunc(vector<string> filename, vector<bool> flagbool, string pathname){
+	struct stat files;
+	vector <string> newfilename;
+	string path;
+	sort(filename.begin(),filename.end(),sortfunc);
+
+	for (size_t k = 0; k < filename.size(); k++){
+		path =  pathname + "/" + filename.at(k); 
+		//have to trace the path back to original directory 
+		if (stat(path.c_str(),&files) != 0){
+			perror("ERROR HAPPENED 11");
+			exit(1); 
+		}		
+		if (S_ISDIR(files.st_mode) && filename.at(k) != "." && filename.at(k) != ".." ){
+		//tests to see whether if the file is a directory or not 
+			DIR *dirp = opendir(path.c_str());
+			if (dirp == NULL){
+				perror("ERROR!!!!! with open directory");
+				exit(1);
+			}
+			dirent *direntp;
+			while ((direntp = readdir(dirp))){
+				if (direntp < 0){
+					perror("Error with pointer");
+					exit(1);
+				}
+				if (!flagbool.at(0) && direntp -> d_name[0] != '.'){
+					newfilename.push_back(direntp -> d_name);
+					//if it is a directory, then push onto new vector
+				}
+				else if (flagbool.at(0)){
+					newfilename.push_back(direntp -> d_name);
+					//if -a flag is there or not along with -R
+				}
+			}
+			
+			closedir(dirp); //closes 
+			Rfunc(newfilename,flagbool,path); //recursive calling back
+			sort(newfilename.begin(),newfilename.end(),sortfunc);
+	 		cout << "./" <<  filename.at(k) << ": " << endl;
+			print (newfilename,flagbool,path); 
+			
+			//print all sub-directories 
+			newfilename.clear();
+			
+							
+		}
+		
+ 
 	}
-	for (size_t i = 0; i < filename.size(); i++){
-		cout << filename.at(i) << endl; 
-	}
-*/
+		
 }
