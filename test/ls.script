@@ -1,48 +1,54 @@
-Script started on Mon 09 Feb 2015 03:19:11 AM PST
+Script started on Mon 09 Feb 2015 03:56:07 AM PST
 ~
 yli066@hammer $ ~/CS100/rshell
 yli066@hammer $ mkdir -p ./bin
 g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell 
 g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
 ~/CS100/rshell
+yli066@hammer $ THE FOLLOWING SCRIPT WILL TEST FIRST AND THEN NAME WHAT IT IS TESTING FOR
+~/CS100/rshell
+yli066@hammer $ ALL OF THE TESTS DESCRIPTIONS ARE LISTED BELOW THE RESULTS FROM THE TEST
+~/CS100/rshell
 yli066@hammer $ bin LICENSE ls.script Makefile README.md src test testscripts.txt 
+~/CS100/rshell
+yli066@hammer $ ls without arguments
 ~/CS100/rshell
 yli066@hammer $ . .. .git bin LICENSE ls.script Makefile README.md src test testscripts.txt 
 ~/CS100/rshell
 yli066@hammer $ total: 56
-drwx------6    csmajs4096 Feb  9 03:15     .
+drwx------6    csmajs4096 Feb  9 03:52     .
 drwx------6    csmajs4096 Feb  9 03:14     ..
-drwx------8    csmajs4096 Feb  9 03:14     .git
-drwx------2    csmajs4096 Feb  9 03:15     bin
+drwx------8    csmajs4096 Feb  9 03:25     .git
+drwx------2    csmajs4096 Feb  9 03:52     bin
 -rw-------1    csmajs18545Feb  9 03:14     LICENSE
--rw-------1    csmajs0    Feb  9 03:15     ls.script
+-rw-------1    csmajs0    Feb  9 03:52     ls.script
 -rw-------1    csmajs495  Feb  9 03:14     Makefile
 -rw-------1    csmajs2461 Feb  9 03:14     README.md
 drwx------2    csmajs4096 Feb  9 03:14     src
-drwx------2    csmajs4096 Feb  9 03:15     test
--rw-------1    csmajs2038 Feb  9 03:08     testscripts.txt
+drwx------2    csmajs4096 Feb  9 03:47     test
+-rw-------1    csmajs2987 Feb  9 03:52     testscripts.txt
 ~/CS100/rshell
 yli066@hammer $ .: 
 total: 56
-drwx------6    csmajs4096 Feb  9 03:15     .
+drwx------6    csmajs4096 Feb  9 03:52     .
 drwx------6    csmajs4096 Feb  9 03:14     ..
-drwx------8    csmajs4096 Feb  9 03:14     .git
-drwx------2    csmajs4096 Feb  9 03:15     bin
+drwx------8    csmajs4096 Feb  9 03:25     .git
+drwx------2    csmajs4096 Feb  9 03:52     bin
 -rw-------1    csmajs18545Feb  9 03:14     LICENSE
--rw-------1    csmajs0    Feb  9 03:15     ls.script
+-rw-------1    csmajs0    Feb  9 03:52     ls.script
 -rw-------1    csmajs495  Feb  9 03:14     Makefile
 -rw-------1    csmajs2461 Feb  9 03:14     README.md
 drwx------2    csmajs4096 Feb  9 03:14     src
-drwx------2    csmajs4096 Feb  9 03:15     test
--rw-------1    csmajs2038 Feb  9 03:08     testscripts.txt
+drwx------2    csmajs4096 Feb  9 03:47     test
+-rw-------1    csmajs2987 Feb  9 03:52     testscripts.txt
 ./   branches: 
 total: 8
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+drwx------8    csmajs4096 Feb  9 03:25     ..
 ./   hooks: 
 total: 52
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+drwx------8    csmajs4096 Feb  9 03:25     ..
 -rwx------1    csmajs452  Feb  9 03:14     applypatch-msg.sample
 -rwx------1    csmajs896  Feb  9 03:14     commit-msg.sample
 -rwx------1    csmajs548  Feb  9 03:14     post-receive.sample
@@ -56,120 +62,188 @@ drwx------8    csmajs4096 Feb  9 03:14     ..
 ./   info: 
 total: 12
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+drwx------8    csmajs4096 Feb  9 03:25     ..
 -rw-------1    csmajs240  Feb  9 03:14     exclude
 ./   heads: 
 total: 12
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------3    csmajs4096 Feb  9 03:14     ..
--rw-------1    csmajs184  Feb  9 03:14     master
-./   refs: 
+drwx------4    csmajs4096 Feb  9 03:18     ..
+-rw-------1    csmajs515  Feb  9 03:21     master
+./   origin: 
 total: 12
-drwx------3    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:18     .
+drwx------3    csmajs4096 Feb  9 03:18     ..
+-rw-------1    csmajs302  Feb  9 03:21     master
+./   remotes: 
+total: 12
+drwx------3    csmajs4096 Feb  9 03:18     .
+drwx------4    csmajs4096 Feb  9 03:18     ..
+drwx------2    csmajs4096 Feb  9 03:18     origin
+./   refs: 
+total: 16
+drwx------4    csmajs4096 Feb  9 03:18     .
 drwx------3    csmajs4096 Feb  9 03:14     ..
 drwx------2    csmajs4096 Feb  9 03:14     heads
+drwx------3    csmajs4096 Feb  9 03:18     remotes
 ./   logs: 
 total: 16
 drwx------3    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
--rw-------1    csmajs184  Feb  9 03:14     HEAD
-drwx------3    csmajs4096 Feb  9 03:14     refs
+drwx------8    csmajs4096 Feb  9 03:25     ..
+-rw-------1    csmajs515  Feb  9 03:21     HEAD
+drwx------4    csmajs4096 Feb  9 03:18     refs
+./   16: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:26     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs145  Feb  9 03:26     d01514e9cbf05df2b120974a5be1b37c47ca29
+./   2b: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs168  Feb  9 03:21     43739f74bf4a841ff114c05ec0b2d177c6b3cf
+./   30: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:17     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs82   Feb  9 03:17     f316e6f42e60170eac53d02957afcef86a6b07
+./   3b: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:17     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs175  Feb  9 03:17     4155055d3a92aa907c8242da49f38d732e4336
+./   40: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:16     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs1941 Feb  9 03:16     2d82627c24d3676de50e67db724f345cba92c3
+./   6d: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs118  Feb  9 03:21     8c67907b021f2bca4b7b5cdc1e08646c5eddf6
+./   cb: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:17     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs173  Feb  9 03:17     d3fea3ec4bd8d2bf30d76e569e4fb98a9dc578
+./   d0: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs732  Feb  9 03:21     e25e0341be18c38ee5c712e678d2621e84ff36
+./   f0: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs175  Feb  9 03:21     a6de0bd0834b03e692fff081e711ebb739e16f
 ./   info: 
 total: 8
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------4    csmajs4096 Feb  9 03:14     ..
+drwx------13   csmajs4096 Feb  9 03:26     ..
 ./   pack: 
 total: 96
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------4    csmajs4096 Feb  9 03:14     ..
+drwx------13   csmajs4096 Feb  9 03:26     ..
 -r--------1    csmajs74999Feb  9 03:14     pack-0f9f5c89fa703ae5bb604bcc845f4928dd0d97ee.pack
 -r--------1    csmajs4684 Feb  9 03:14     pack-0f9f5c89fa703ae5bb604bcc845f4928dd0d97ee.idx
 ./   objects: 
-total: 16
-drwx------4    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+total: 52
+drwx------13   csmajs4096 Feb  9 03:26     .
+drwx------8    csmajs4096 Feb  9 03:25     ..
+drwx------2    csmajs4096 Feb  9 03:26     16
+drwx------2    csmajs4096 Feb  9 03:21     2b
+drwx------2    csmajs4096 Feb  9 03:17     30
+drwx------2    csmajs4096 Feb  9 03:17     3b
+drwx------2    csmajs4096 Feb  9 03:16     40
+drwx------2    csmajs4096 Feb  9 03:21     6d
+drwx------2    csmajs4096 Feb  9 03:17     cb
+drwx------2    csmajs4096 Feb  9 03:21     d0
+drwx------2    csmajs4096 Feb  9 03:21     f0
 drwx------2    csmajs4096 Feb  9 03:14     info
 drwx------2    csmajs4096 Feb  9 03:14     pack
 ./   heads: 
 total: 8
-drwx------2    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:21     .
 drwx------5    csmajs4096 Feb  9 03:14     ..
--rw-------1    csmajs41   Feb  9 03:14     master
+-rw-------1    csmajs41   Feb  9 03:21     master
 ./   origin: 
 total: 8
-drwx------2    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:21     .
 drwx------3    csmajs4096 Feb  9 03:14     ..
 -rw-------1    csmajs32   Feb  9 03:14     HEAD
+-rw-------1    csmajs41   Feb  9 03:21     master
 ./   remotes: 
 total: 12
 drwx------3    csmajs4096 Feb  9 03:14     .
 drwx------5    csmajs4096 Feb  9 03:14     ..
-drwx------2    csmajs4096 Feb  9 03:14     origin
+drwx------2    csmajs4096 Feb  9 03:21     origin
 ./   tags: 
 total: 8
-drwx------2    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:26     .
 drwx------5    csmajs4096 Feb  9 03:14     ..
+-rw-------1    csmajs41   Feb  9 03:26     hw1
 ./   refs: 
 total: 20
 drwx------5    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
-drwx------2    csmajs4096 Feb  9 03:14     heads
+drwx------8    csmajs4096 Feb  9 03:25     ..
+drwx------2    csmajs4096 Feb  9 03:21     heads
 drwx------3    csmajs4096 Feb  9 03:14     remotes
-drwx------2    csmajs4096 Feb  9 03:14     tags
+drwx------2    csmajs4096 Feb  9 03:26     tags
 ./   .git: 
 total: 48
-drwx------8    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------8    csmajs4096 Feb  9 03:25     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 drwx------2    csmajs4096 Feb  9 03:14     branches
--rw-------1    csmajs260  Feb  9 03:14     config
+-rw-------1    csmajs270  Feb  9 03:17     config
+-rw-------1    csmajs17   Feb  9 03:21     COMMIT_EDITMSG
 -rw-------1    csmajs73   Feb  9 03:14     description
 drwx------2    csmajs4096 Feb  9 03:14     hooks
 -rw-------1    csmajs23   Feb  9 03:14     HEAD
 drwx------2    csmajs4096 Feb  9 03:14     info
--rw-------1    csmajs568  Feb  9 03:14     index
+-rw-------1    csmajs656  Feb  9 03:21     index
 drwx------3    csmajs4096 Feb  9 03:14     logs
-drwx------4    csmajs4096 Feb  9 03:14     objects
--rw-------1    csmajs376  Feb  9 03:14     packed-refs
+drwx------13   csmajs4096 Feb  9 03:26     objects
+-rw-------1    csmajs253  Feb  9 03:25     packed-refs
 drwx------5    csmajs4096 Feb  9 03:14     refs
 ./   bin: 
 total: 104
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
--rwx------1    csmajs64991Feb  9 03:15     ls
--rwx------1    csmajs30584Feb  9 03:15     rshell
+drwx------2    csmajs4096 Feb  9 03:52     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
+-rwx------1    csmajs64991Feb  9 03:52     ls
+-rwx------1    csmajs30584Feb  9 03:52     rshell
 ./   src: 
 total: 24
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
 ./   test: 
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
 ~/CS100/rshell
 yli066@hammer $ .: 
 total: 56
-drwx------6    csmajs4096 Feb  9 03:15     .
+drwx------6    csmajs4096 Feb  9 03:52     .
 drwx------6    csmajs4096 Feb  9 03:14     ..
-drwx------8    csmajs4096 Feb  9 03:14     .git
-drwx------2    csmajs4096 Feb  9 03:15     bin
+drwx------8    csmajs4096 Feb  9 03:25     .git
+drwx------2    csmajs4096 Feb  9 03:52     bin
 -rw-------1    csmajs18545Feb  9 03:14     LICENSE
--rw-------1    csmajs0    Feb  9 03:15     ls.script
+-rw-------1    csmajs0    Feb  9 03:52     ls.script
 -rw-------1    csmajs495  Feb  9 03:14     Makefile
 -rw-------1    csmajs2461 Feb  9 03:14     README.md
 drwx------2    csmajs4096 Feb  9 03:14     src
-drwx------2    csmajs4096 Feb  9 03:15     test
--rw-------1    csmajs2038 Feb  9 03:08     testscripts.txt
+drwx------2    csmajs4096 Feb  9 03:47     test
+-rw-------1    csmajs2987 Feb  9 03:52     testscripts.txt
 ./   branches: 
 total: 8
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+drwx------8    csmajs4096 Feb  9 03:25     ..
 ./   hooks: 
 total: 52
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+drwx------8    csmajs4096 Feb  9 03:25     ..
 -rwx------1    csmajs452  Feb  9 03:14     applypatch-msg.sample
 -rwx------1    csmajs896  Feb  9 03:14     commit-msg.sample
 -rwx------1    csmajs548  Feb  9 03:14     post-receive.sample
@@ -183,100 +257,172 @@ drwx------8    csmajs4096 Feb  9 03:14     ..
 ./   info: 
 total: 12
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+drwx------8    csmajs4096 Feb  9 03:25     ..
 -rw-------1    csmajs240  Feb  9 03:14     exclude
 ./   heads: 
 total: 12
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------3    csmajs4096 Feb  9 03:14     ..
--rw-------1    csmajs184  Feb  9 03:14     master
-./   refs: 
+drwx------4    csmajs4096 Feb  9 03:18     ..
+-rw-------1    csmajs515  Feb  9 03:21     master
+./   origin: 
 total: 12
-drwx------3    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:18     .
+drwx------3    csmajs4096 Feb  9 03:18     ..
+-rw-------1    csmajs302  Feb  9 03:21     master
+./   remotes: 
+total: 12
+drwx------3    csmajs4096 Feb  9 03:18     .
+drwx------4    csmajs4096 Feb  9 03:18     ..
+drwx------2    csmajs4096 Feb  9 03:18     origin
+./   refs: 
+total: 16
+drwx------4    csmajs4096 Feb  9 03:18     .
 drwx------3    csmajs4096 Feb  9 03:14     ..
 drwx------2    csmajs4096 Feb  9 03:14     heads
+drwx------3    csmajs4096 Feb  9 03:18     remotes
 ./   logs: 
 total: 16
 drwx------3    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
--rw-------1    csmajs184  Feb  9 03:14     HEAD
-drwx------3    csmajs4096 Feb  9 03:14     refs
+drwx------8    csmajs4096 Feb  9 03:25     ..
+-rw-------1    csmajs515  Feb  9 03:21     HEAD
+drwx------4    csmajs4096 Feb  9 03:18     refs
+./   16: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:26     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs145  Feb  9 03:26     d01514e9cbf05df2b120974a5be1b37c47ca29
+./   2b: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs168  Feb  9 03:21     43739f74bf4a841ff114c05ec0b2d177c6b3cf
+./   30: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:17     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs82   Feb  9 03:17     f316e6f42e60170eac53d02957afcef86a6b07
+./   3b: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:17     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs175  Feb  9 03:17     4155055d3a92aa907c8242da49f38d732e4336
+./   40: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:16     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs1941 Feb  9 03:16     2d82627c24d3676de50e67db724f345cba92c3
+./   6d: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs118  Feb  9 03:21     8c67907b021f2bca4b7b5cdc1e08646c5eddf6
+./   cb: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:17     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs173  Feb  9 03:17     d3fea3ec4bd8d2bf30d76e569e4fb98a9dc578
+./   d0: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs732  Feb  9 03:21     e25e0341be18c38ee5c712e678d2621e84ff36
+./   f0: 
+total: 12
+drwx------2    csmajs4096 Feb  9 03:21     .
+drwx------13   csmajs4096 Feb  9 03:26     ..
+-r--------1    csmajs175  Feb  9 03:21     a6de0bd0834b03e692fff081e711ebb739e16f
 ./   info: 
 total: 8
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------4    csmajs4096 Feb  9 03:14     ..
+drwx------13   csmajs4096 Feb  9 03:26     ..
 ./   pack: 
 total: 96
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------4    csmajs4096 Feb  9 03:14     ..
+drwx------13   csmajs4096 Feb  9 03:26     ..
 -r--------1    csmajs74999Feb  9 03:14     pack-0f9f5c89fa703ae5bb604bcc845f4928dd0d97ee.pack
 -r--------1    csmajs4684 Feb  9 03:14     pack-0f9f5c89fa703ae5bb604bcc845f4928dd0d97ee.idx
 ./   objects: 
-total: 16
-drwx------4    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
+total: 52
+drwx------13   csmajs4096 Feb  9 03:26     .
+drwx------8    csmajs4096 Feb  9 03:25     ..
+drwx------2    csmajs4096 Feb  9 03:26     16
+drwx------2    csmajs4096 Feb  9 03:21     2b
+drwx------2    csmajs4096 Feb  9 03:17     30
+drwx------2    csmajs4096 Feb  9 03:17     3b
+drwx------2    csmajs4096 Feb  9 03:16     40
+drwx------2    csmajs4096 Feb  9 03:21     6d
+drwx------2    csmajs4096 Feb  9 03:17     cb
+drwx------2    csmajs4096 Feb  9 03:21     d0
+drwx------2    csmajs4096 Feb  9 03:21     f0
 drwx------2    csmajs4096 Feb  9 03:14     info
 drwx------2    csmajs4096 Feb  9 03:14     pack
 ./   heads: 
 total: 8
-drwx------2    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:21     .
 drwx------5    csmajs4096 Feb  9 03:14     ..
--rw-------1    csmajs41   Feb  9 03:14     master
+-rw-------1    csmajs41   Feb  9 03:21     master
 ./   origin: 
 total: 8
-drwx------2    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:21     .
 drwx------3    csmajs4096 Feb  9 03:14     ..
 -rw-------1    csmajs32   Feb  9 03:14     HEAD
+-rw-------1    csmajs41   Feb  9 03:21     master
 ./   remotes: 
 total: 12
 drwx------3    csmajs4096 Feb  9 03:14     .
 drwx------5    csmajs4096 Feb  9 03:14     ..
-drwx------2    csmajs4096 Feb  9 03:14     origin
+drwx------2    csmajs4096 Feb  9 03:21     origin
 ./   tags: 
 total: 8
-drwx------2    csmajs4096 Feb  9 03:14     .
+drwx------2    csmajs4096 Feb  9 03:26     .
 drwx------5    csmajs4096 Feb  9 03:14     ..
+-rw-------1    csmajs41   Feb  9 03:26     hw1
 ./   refs: 
 total: 20
 drwx------5    csmajs4096 Feb  9 03:14     .
-drwx------8    csmajs4096 Feb  9 03:14     ..
-drwx------2    csmajs4096 Feb  9 03:14     heads
+drwx------8    csmajs4096 Feb  9 03:25     ..
+drwx------2    csmajs4096 Feb  9 03:21     heads
 drwx------3    csmajs4096 Feb  9 03:14     remotes
-drwx------2    csmajs4096 Feb  9 03:14     tags
+drwx------2    csmajs4096 Feb  9 03:26     tags
 ./   .git: 
 total: 48
-drwx------8    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------8    csmajs4096 Feb  9 03:25     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 drwx------2    csmajs4096 Feb  9 03:14     branches
--rw-------1    csmajs260  Feb  9 03:14     config
+-rw-------1    csmajs270  Feb  9 03:17     config
+-rw-------1    csmajs17   Feb  9 03:21     COMMIT_EDITMSG
 -rw-------1    csmajs73   Feb  9 03:14     description
 drwx------2    csmajs4096 Feb  9 03:14     hooks
 -rw-------1    csmajs23   Feb  9 03:14     HEAD
 drwx------2    csmajs4096 Feb  9 03:14     info
--rw-------1    csmajs568  Feb  9 03:14     index
+-rw-------1    csmajs656  Feb  9 03:21     index
 drwx------3    csmajs4096 Feb  9 03:14     logs
-drwx------4    csmajs4096 Feb  9 03:14     objects
--rw-------1    csmajs376  Feb  9 03:14     packed-refs
+drwx------13   csmajs4096 Feb  9 03:26     objects
+-rw-------1    csmajs253  Feb  9 03:25     packed-refs
 drwx------5    csmajs4096 Feb  9 03:14     refs
 ./   bin: 
 total: 104
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
--rwx------1    csmajs64991Feb  9 03:15     ls
--rwx------1    csmajs30584Feb  9 03:15     rshell
+drwx------2    csmajs4096 Feb  9 03:52     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
+-rwx------1    csmajs64991Feb  9 03:52     ls
+-rwx------1    csmajs30584Feb  9 03:52     rshell
 ./   src: 
 total: 24
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
 ./   test: 
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
+~/CS100/rshell
+yli066@hammer $ testing for all flags
 ~/CS100/rshell
 yli066@hammer $ exec.script 
+~/CS100/rshell
+yli066@hammer $ testing for directories as arguments
 ~/CS100/rshell
 yli066@hammer $ src:
 ls.cpp main.cpp 
@@ -291,30 +437,32 @@ test:
 yli066@hammer $ src:
 total: 24
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
 test :
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
 ~/CS100/rshell
 yli066@hammer $ src:
 total: 24
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
 test :
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
 ~/CS100/rshell
+yli066@hammer $ testing for combination of directories and flags
+~/CS100/rshell
 yli066@hammer $ total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
 ~/CS100/rshell
 yli066@hammer $ test: 
@@ -322,36 +470,44 @@ exec.script
 ~/CS100/rshell
 yli066@hammer $ test: 
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
 ~/CS100/rshell
 yli066@hammer $ src: 
 total: 24
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
 ~/CS100/rshell
 yli066@hammer $ src:
 total: 24
 drwx------2    csmajs4096 Feb  9 03:14     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
 test :
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
+~/CS100/rshell
+yli066@hammer $ testing for different combinations of flags
+~/CS100/rshell
+yli066@hammer $ such as -aaaaa -lllllllll -RRRR -allRal
 ~/CS100/rshell
 yli066@hammer $ bash: syntax error near unexpected token `;;'
 ~/CS100/rshell
 yli066@hammer $ bash: syntax error near unexpected token `||'
 ~/CS100/rshell
+yli066@hammer $ testing for special characters repeated
+~/CS100/rshell
 yli066@hammer $ bin LICENSE ls.script Makefile README.md src test testscripts.txt 
 ~/CS100/rshell
 yli066@hammer $ lab rshell rshelldntopen 
+~/CS100/rshell
+yli066@hammer $ testing for . and .. directories
 ~/CS100/rshell
 yli066@hammer $ ./: 
 bin LICENSE ls.script Makefile README.md src test testscripts.txt 
@@ -363,16 +519,18 @@ ls.cpp main.cpp
 exec.script 
 ~/CS100/rshell
 yli066@hammer $ total: 44
-drwx------2    csmajs4096 Feb  9 03:15     bin
+drwx------2    csmajs4096 Feb  9 03:52     bin
 -rw-------1    csmajs18545Feb  9 03:14     LICENSE
--rw-------1    csmajs0    Feb  9 03:15     ls.script
+-rw-------1    csmajs0    Feb  9 03:52     ls.script
 -rw-------1    csmajs495  Feb  9 03:14     Makefile
 -rw-------1    csmajs2461 Feb  9 03:14     README.md
 drwx------2    csmajs4096 Feb  9 03:14     src
-drwx------2    csmajs4096 Feb  9 03:15     test
--rw-------1    csmajs2038 Feb  9 03:08     testscripts.txt
+drwx------2    csmajs4096 Feb  9 03:47     test
+-rw-------1    csmajs2987 Feb  9 03:52     testscripts.txt
 ~/CS100/rshell
 yli066@hammer $ . .. .git bin LICENSE ls.script Makefile README.md src test testscripts.txt 
+~/CS100/rshell
+yli066@hammer $ testing for special character combinations
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
@@ -382,17 +540,19 @@ yli066@hammer $ boot bin class cgroup C:\nppdf32Log\debuglog.txt dev etc extra h
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
+yli066@hammer $ testing for repetition of special chars
+~/CS100/rshell
 yli066@hammer $ . .. .git bin LICENSE ls.script Makefile README.md src test testscripts.txt 
 ~/CS100/rshell
 yli066@hammer $ total: 44
-drwx------2    csmajs4096 Feb  9 03:15     bin
+drwx------2    csmajs4096 Feb  9 03:52     bin
 -rw-------1    csmajs18545Feb  9 03:14     LICENSE
--rw-------1    csmajs0    Feb  9 03:15     ls.script
+-rw-------1    csmajs0    Feb  9 03:52     ls.script
 -rw-------1    csmajs495  Feb  9 03:14     Makefile
 -rw-------1    csmajs2461 Feb  9 03:14     README.md
 drwx------2    csmajs4096 Feb  9 03:14     src
-drwx------2    csmajs4096 Feb  9 03:15     test
--rw-------1    csmajs2038 Feb  9 03:08     testscripts.txt
+drwx------2    csmajs4096 Feb  9 03:47     test
+-rw-------1    csmajs2987 Feb  9 03:52     testscripts.txt
 ~/CS100/rshell
 yli066@hammer $ .: 
 bin LICENSE ls.script Makefile README.md src test testscripts.txt 
@@ -425,9 +585,13 @@ Segmentation fault
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
+yli066@hammer $ all above tests for special chars all in different combinations
+~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
+~/CS100/rshell
+yli066@hammer $ testing for a single character as input
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
@@ -440,8 +604,8 @@ yli066@hammer $ Segmentation fault
 yli066@hammer $ ERROR OCCURRED~/CS100/rshell
 yli066@hammer $ test: 
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
@@ -454,6 +618,8 @@ test:
 exec.script 
 test:
 exec.script 
+~/CS100/rshell
+yli066@hammer $ testing for a combination of directories
 ~/CS100/rshell
 yli066@hammer $ src:
 ls.cpp main.cpp 
@@ -477,6 +643,8 @@ src  :
 total: 16
 -rw-------1    csmajs6591 Feb  9 03:14     ls.cpp
 -rw-------1    csmajs6738 Feb  9 03:14     main.cpp
+~/CS100/rshell
+yli066@hammer $ testing multiple directories and flags out of order
 ~/CS100/rshell
 yli066@hammer $ test:
 exec.script 
@@ -502,9 +670,11 @@ yli066@hammer $ ERROR OCCURRED~/CS100/rshell
 yli066@hammer $ ERROR OCCURRED~/CS100/rshell
 yli066@hammer $ test: 
 total: 12
-drwx------2    csmajs4096 Feb  9 03:15     .
-drwx------6    csmajs4096 Feb  9 03:15     ..
+drwx------2    csmajs4096 Feb  9 03:47     .
+drwx------6    csmajs4096 Feb  9 03:52     ..
 -rw-------1    csmajs2487 Feb  9 03:14     exec.script
+~/CS100/rshell
+yli066@hammer $ testing for invalid forms of inputs for flags
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
@@ -515,6 +685,8 @@ yli066@hammer $ Segmentation fault
 yli066@hammer $ ERROR OCCURRED~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
+yli066@hammer $ testing what happens if directory is not there
+~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
@@ -523,16 +695,20 @@ yli066@hammer $ Segmentation fault
 ~/CS100/rshell
 yli066@hammer $ exec.script 
 ~/CS100/rshell
-yli066@hammer $ Segmentation fault
+yli066@hammer $ testing from input of numbers
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
 yli066@hammer $ Segmentation fault
 ~/CS100/rshell
-yli066@hammer $ ~/CS100/rshell
-yli066@hammer $ ~/CS100/rshell
-yli066@hammer $ bash: works.: command not found
+yli066@hammer $ Segmentation fault
+~/CS100/rshell
+yli066@hammer $ all normal functions of program work
+~/CS100/rshell
+yli066@hammer $ all flags work and all inputs to the program work
+~/CS100/rshell
+yli066@hammer $ only special characters and some special cases have bugs, everything else works.
 ~/CS100/rshell
 yli066@hammer $ exit
 
-Script done on Mon 09 Feb 2015 03:19:12 AM PST
+Script done on Mon 09 Feb 2015 03:56:08 AM PST
