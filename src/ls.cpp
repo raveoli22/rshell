@@ -1,4 +1,5 @@
 #include <sys/types.h>
+#include <iomanip>
 #include <stack>
 #include <pwd.h>
 #include <grp.h>
@@ -21,8 +22,11 @@
 
 using namespace std;
 string perm(mode_t info);
+bool sortfunc(string a, string b){ 
+	return tolower(a[0]) < tolower(b[0]);
+}
 
-void print(vector<string> filename,vector<bool> flagbool){
+void print(vector<string> filename,vector<bool> flagbool,string dir){
 	struct stat filestuff; 
 	
 	/*if (flagbool.at(0)){
@@ -32,22 +36,40 @@ void print(vector<string> filename,vector<bool> flagbool){
 		cout << endl;
 	}*/
 	if (flagbool.at(1)){ // -l flag was called
+		int Total = 0; 
+		string completepath;
+		string completepath2;
+		for (size_t k = 0; k < filename.size(); k++){
+			
+			completepath = dir + "/" + filename.at(k); 
+			//have to trace the path back to original directory 
+			if (stat(completepath.c_str(),&filestuff) != 0){
+				perror("ERROR HAPPENED 11");
+				exit(1);
+			}
+			Total = Total + filestuff.st_blocks;
+		}
+		cout << "total: " << Total/2 << endl;
 		for (size_t j = 0; j < filename.size(); j++){
-			if (stat(filename.at(j).c_str(),&filestuff) != 0){
+			completepath2 = dir + "/" + filename.at(j);
+			//trace back to original directory
+			if (stat(completepath2.c_str(),&filestuff) != 0){
 				perror("ERROR HAPPENED");
 				exit(1);
 			}
 			
-			cout << perm(filestuff.st_mode) << "\t";
-			cout << filestuff.st_nlink << "\t";
+			cout << perm(filestuff.st_mode) << left << setw(5);
+			cout << filestuff.st_nlink << left << setw(5);
 			struct group fileowner = *getgrgid(filestuff.st_gid);
-			cout << fileowner.gr_name << "\t";
-			cout << filestuff.st_size << "\t";
+			cout << fileowner.gr_name << left << setw(5);
+			cout << filestuff.st_size << left << setw(5);
 			string time = ctime(&filestuff.st_mtime);
-			cout << time.substr(4,12) << "\t";
-			cout << filename.at(j) << "\t";	
-			cout << endl;
-			 
+			time = time.substr(4,12); //gets time
+			//only gets month and time, cuts off day and seconds
+			cout << time << left << setw(5);
+			cout << "  "; //making the computer line up
+			cout << filename.at(j) << left << setw(5);    
+		        cout << endl;
 		}
 	}
 	else {
@@ -57,52 +79,52 @@ void print(vector<string> filename,vector<bool> flagbool){
 		cout << endl;
 	}
 } 
-string perm(mode_t info){
+string perm(mode_t fileinfo){
 	string str = "----------";
-	if (S_ISBLK(info)) {
+	if (S_ISBLK(fileinfo)) {
 		str[0] = 'b';
 	}
-	else if (S_ISDIR(info)) {
+	else if (S_ISDIR(fileinfo)) {
 		str[0] = 'd';
 	}
-	else if (S_ISFIFO(info)) {
+	else if (S_ISFIFO(fileinfo)) {
 		str[0] = 'p';
 	}
-	else if (S_ISSOCK(info)) { 
+	else if (S_ISSOCK(fileinfo)) { 
 		str[0] = 's';
 	}
-	else if (S_ISLNK(info)) {
+	else if (S_ISLNK(fileinfo)) {
 		str[0] = 'l';
 	}
-	else if (S_ISCHR(info)) {
+	else if (S_ISCHR(fileinfo)) {
 		str[0] = 'c';
 	}
 	
-	if (info & S_IRUSR) {
+	if (fileinfo & S_IRUSR) {
 		str[1] = 'r';
 	}
-	if (info & S_IWUSR) {
+	if (fileinfo & S_IWUSR) {
 		str[2] = 'w';
 	}
-	if (info & S_IXUSR) {
+	if (fileinfo & S_IXUSR) {
 		str[3] = 'x';
 	}
-	if (info & S_IRGRP) {
+	if (fileinfo & S_IRGRP) {
 		str[4] = 'r';
 	}
-	if (info & S_IWGRP) {
+	if (fileinfo & S_IWGRP) {
 		str[5] = 'w';
 	}
-	if (info & S_IXGRP) {
+	if (fileinfo & S_IXGRP) {
 		str[6] = 'x';
 	}
-	if (info & S_IROTH) { 
+	if (fileinfo & S_IROTH) { 
 		str[7] = 'r';
 	}
-	if (info & S_IWOTH) {
+	if (fileinfo & S_IWOTH) {
 		str[8] = 'w';
 	}
-	if (info & S_IXOTH) {
+	if (fileinfo & S_IXOTH) {
 		str[9] = 'x';
 	}
 	
@@ -134,15 +156,15 @@ int main(int argc, char** argv){
 			for (int j = 1; flags[j] != '\0'; j++){
 				if (flags[j] == 'a'){
 					flagbool.at(0) = true;
-				}
+				} //testing for the -a flag
 				else if (flags[j] == 'l'){
 					flagbool.at(1) = true;
-				}
+				} //testing for the -l flag
 				else if (flags[j] == 'R'){
 					flagbool.at(2) = true; 
-				}
+				} //testing for the -R flag
 				else {
-					perror("ERROR HAPPENED");
+					cout << "ERROR OCCURRED";
 					exit(1);
 				}
 			}
@@ -160,8 +182,9 @@ int main(int argc, char** argv){
 		DIR *dirp = opendir(pathname.at(i).c_str());
 		dirent *direntp;
 		while ((direntp = readdir(dirp))){
-			if (!flagbool.at(0)){
-				if (direntp -> d_name[0] != '.'){	
+			if (!flagbool.at(0)){ // tests for the -a flag 
+				if (direntp -> d_name[0] != '.'){//if -a flagged
+                                        //then do not push files beginning with .	
 					filename.push_back(direntp -> d_name);
 				}
 				
@@ -172,20 +195,24 @@ int main(int argc, char** argv){
 			
 		}
 		closedir(dirp);
+		if (pathname.size() > 1){
+			cout << pathname.at(i) << ":" << endl;
+			sort(filename.begin(),filename.end(),sortfunc);
+			print(filename,flagbool,pathname.at(i));
+			filename.clear();
+		}
+		else {
+			sort(filename.begin(),filename.end(),sortfunc);
+			print(filename,flagbool,pathname.at(i));
+			filename.clear();
+		}
+		
 	}		
 	
+	/*for (size_t i = 0; i < filename.size(); i++){
+		cout << filename.at(i) << "test"  << endl;
+	}*/	
 	
-	
-	for (size_t b = 0; b < pathname.size(); b++){
-		if (pathname.size() > 1){
-			cout << pathname.at(b) << ":" << endl;
-			//open function
-		}
-		print(filename,flagbool);
-	}
-	
-		// open function
-
 /*
 	for (size_t i = 0; i < flagbool.size(); i++){
 		cout << flagbool.at(i) << endl;
