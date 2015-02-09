@@ -1,0 +1,81 @@
+cd CS100/rshell
+make
+bin/ls #normal ls works
+bin/ls -a
+bin/ls -a -l
+bin/ls -a -l -R
+bin/ls -alR #all flags work
+bin/ls test #directories work
+bin/ls src test
+bin/ls -a src test
+bin/ls -a -l src test #flags work with directories
+bin/ls -la src test #random combinations
+bin/ls test -al
+bin/ls test -R
+bin/ls test -a -R -l #different combinations of flags
+bin/ls src -aaaaaaaaaaaalR
+bin/ls src -aaaaR test -l
+bin/ls ;;;;;;;;;;;;;;;; #special characters
+bin/ls ||||||
+bin/ls .
+bin/ls ..
+bin/ls ./ -R #special combinations of directories and characters
+bin/ls ./ -l
+bin/ls ./ -a
+bin/ls .......... #more special characters
+bin/ls ++++++
+bin/ls ///////
+bin/ls 12345
+bin/ls -aaaaaaaaaaaaaaaaaaaaaa #special case of flags
+bin/ls -llllllllllllllllllllll
+bin/ls -RRRRRRRRRRRRRRRRR #special case of flags
+bin/ls -ALRALRALR
+bin/ls ^^^
+bin/ls (               #special characters
+bin/ls )
+bin/ls ()
+bin/ls ,,,,,,,,,
+bin/ls lalala
+bin/ls ***
+bin/ls lslsls #multiple ls
+bin/ls && 
+bin/ls %%%%% #special character
+bin/ls +++++
+bin/ls @
+bin/ls a     #single character
+bin/ls .............
+bin/ls =========
+bin/ls -alRlRlraAAA #speccial case
+bin/ls -fffffffff 
+bin/ls $$$$$$
+bin/ls -a-l-R
+bin/ls -aR -l test
+bin/ls testsrc
+bin/ls test test test test #multiple directories
+bin/ls src test src
+bin/ls src -l test -R
+bin/ls test -R -l src #mixing combinations of flags and directories
+bin/ls -R test -R src -R src
+bin/ls src test -a src -a src
+bin/ls -a -a -a ls 
+bin/ls -a-a-a-a #combining flags should not work
+bin/ls -l-l-l
+bin/ls -a-l-R
+bin/ls -l-l -R -a
+bin/ls -llllllR test -a
+bin/ls testing
+bin/ls -a -R -l -a testing #right flags, wrong directory
+bin/ls bin/ls
+bin/ls src -L #right directory wrong flag
+bin/ls Makefile
+bin/ls README.md #testing on files not directories
+bin/ls 09827 #testing on number inputs
+bin/ls jkjkjk 
+bin/ls ./test
+bin/ls src/main.cpp #testing if to see if it reaches inside
+bin/ls ../...
+bin/ls rshell
+#all normal functions of program work
+#only special characters and some special cases have bugs, everything else
+works. 
+exit
