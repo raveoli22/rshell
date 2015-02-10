@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat testscripts.txt | while read in
+do
+	echo $in
+	echo $in | xargs bin/ls
+	echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+	echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+done 
+

@@ -1,0 +1,813 @@
+Script started on Mon 09 Feb 2015 07:05:24 PM PST
+~
+yli066@hammer $ cd CS100
+~/CS100
+yli066@hammer $ cd rshell
+~/CS100/rshell
+yli066@hammer $ make
+mkdir -p ./bin
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell 
+g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
+~/CS100/rshell
+yli066@hammer $ bin/ls
+bin LICENSE Makefile NEWlstest.script README.md src test tester testscripts.txt 
+~/CS100/rshell
+yli066@hammer $ ./tester #RUNS ALL TESTS
+echo ls without arguments
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo ALL OF THE FOLLOWING ARE TESTS FOR BIN/LS
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a
+. .. .git bin LICENSE Makefile NEWlstest.script README.md src test tester testscripts.txt 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a -l
+total: 60
+drwx------6    csmajs4096 Feb  9 19:02     .
+drwx------6    csmajs4096 Feb  9 18:13     ..
+drwx------8    csmajs4096 Feb  9 18:13     .git
+drwx------2    csmajs4096 Feb  9 19:02     bin
+-rw-------1    csmajs18545Feb  9 18:13     LICENSE
+-rw-------1    csmajs495  Feb  9 18:13     Makefile
+-rw-------1    csmajs0    Feb  9 19:01     NEWlstest.script
+-rw-------1    csmajs2461 Feb  9 18:13     README.md
+drwx------2    csmajs4096 Feb  9 18:13     src
+drwx------2    csmajs4096 Feb  9 19:01     test
+-rwx------1    csmajs224  Feb  9 18:53     tester
+-rw-------1    csmajs2188 Feb  9 18:53     testscripts.txt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a -l -R
+.: 
+total: 60
+drwx------6    csmajs4096 Feb  9 19:02     .
+drwx------6    csmajs4096 Feb  9 18:13     ..
+drwx------8    csmajs4096 Feb  9 18:13     .git
+drwx------2    csmajs4096 Feb  9 19:02     bin
+-rw-------1    csmajs18545Feb  9 18:13     LICENSE
+-rw-------1    csmajs495  Feb  9 18:13     Makefile
+-rw-------1    csmajs0    Feb  9 19:01     NEWlstest.script
+-rw-------1    csmajs2461 Feb  9 18:13     README.md
+drwx------2    csmajs4096 Feb  9 18:13     src
+drwx------2    csmajs4096 Feb  9 19:01     test
+-rwx------1    csmajs224  Feb  9 18:53     tester
+-rw-------1    csmajs2188 Feb  9 18:53     testscripts.txt
+./   branches: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+./   hooks: 
+total: 48
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+-rwx------1    csmajs452  Feb  9 18:13     applypatch-msg.sample
+-rwx------1    csmajs896  Feb  9 18:13     commit-msg.sample
+-rwx------1    csmajs1348 Feb  9 18:13     pre-push.sample
+-rwx------1    csmajs4951 Feb  9 18:13     pre-rebase.sample
+-rwx------1    csmajs1239 Feb  9 18:13     prepare-commit-msg.sample
+-rwx------1    csmajs398  Feb  9 18:13     pre-applypatch.sample
+-rwx------1    csmajs1635 Feb  9 18:13     pre-commit.sample
+-rwx------1    csmajs189  Feb  9 18:13     post-update.sample
+-rwx------1    csmajs3611 Feb  9 18:13     update.sample
+./   info: 
+total: 12
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs240  Feb  9 18:13     exclude
+./   heads: 
+total: 12
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs184  Feb  9 18:13     master
+./   origin: 
+total: 12
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------3    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs184  Feb  9 18:13     HEAD
+./   remotes: 
+total: 12
+drwx------3    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     origin
+./   refs: 
+total: 16
+drwx------4    csmajs4096 Feb  9 18:13     .
+drwx------3    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     heads
+drwx------3    csmajs4096 Feb  9 18:13     remotes
+./   logs: 
+total: 16
+drwx------3    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs184  Feb  9 18:13     HEAD
+drwx------4    csmajs4096 Feb  9 18:13     refs
+./   info: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+./   pack: 
+total: 100
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+-r--------1    csmajs80180Feb  9 18:13     pack-8d1f11270161a867710ebc3e5bd06b78c3eef75e.pack
+-r--------1    csmajs5048 Feb  9 18:13     pack-8d1f11270161a867710ebc3e5bd06b78c3eef75e.idx
+./   objects: 
+total: 16
+drwx------4    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     info
+drwx------2    csmajs4096 Feb  9 18:13     pack
+./   heads: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------5    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs41   Feb  9 18:13     master
+./   origin: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------3    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs32   Feb  9 18:13     HEAD
+./   remotes: 
+total: 12
+drwx------3    csmajs4096 Feb  9 18:13     .
+drwx------5    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     origin
+./   tags: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------5    csmajs4096 Feb  9 18:13     ..
+./   refs: 
+total: 20
+drwx------5    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     heads
+drwx------3    csmajs4096 Feb  9 18:13     remotes
+drwx------2    csmajs4096 Feb  9 18:13     tags
+./   .git: 
+total: 48
+drwx------8    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+drwx------2    csmajs4096 Feb  9 18:13     branches
+-rw-------1    csmajs260  Feb  9 18:13     config
+-rw-------1    csmajs73   Feb  9 18:13     description
+drwx------2    csmajs4096 Feb  9 18:13     hooks
+-rw-------1    csmajs23   Feb  9 18:13     HEAD
+drwx------2    csmajs4096 Feb  9 18:13     info
+-rw-------1    csmajs656  Feb  9 18:13     index
+drwx------3    csmajs4096 Feb  9 18:13     logs
+drwx------4    csmajs4096 Feb  9 18:13     objects
+-rw-------1    csmajs389  Feb  9 18:13     packed-refs
+drwx------5    csmajs4096 Feb  9 18:13     refs
+./   bin: 
+total: 104
+drwx------2    csmajs4096 Feb  9 19:02     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rwx------1    csmajs64991Feb  9 19:02     ls
+-rwx------1    csmajs30584Feb  9 19:02     rshell
+./   src: 
+total: 24
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+./   test: 
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-alR
+.: 
+total: 60
+drwx------6    csmajs4096 Feb  9 19:02     .
+drwx------6    csmajs4096 Feb  9 18:13     ..
+drwx------8    csmajs4096 Feb  9 18:13     .git
+drwx------2    csmajs4096 Feb  9 19:02     bin
+-rw-------1    csmajs18545Feb  9 18:13     LICENSE
+-rw-------1    csmajs495  Feb  9 18:13     Makefile
+-rw-------1    csmajs0    Feb  9 19:01     NEWlstest.script
+-rw-------1    csmajs2461 Feb  9 18:13     README.md
+drwx------2    csmajs4096 Feb  9 18:13     src
+drwx------2    csmajs4096 Feb  9 19:01     test
+-rwx------1    csmajs224  Feb  9 18:53     tester
+-rw-------1    csmajs2188 Feb  9 18:53     testscripts.txt
+./   branches: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+./   hooks: 
+total: 48
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+-rwx------1    csmajs452  Feb  9 18:13     applypatch-msg.sample
+-rwx------1    csmajs896  Feb  9 18:13     commit-msg.sample
+-rwx------1    csmajs1348 Feb  9 18:13     pre-push.sample
+-rwx------1    csmajs4951 Feb  9 18:13     pre-rebase.sample
+-rwx------1    csmajs1239 Feb  9 18:13     prepare-commit-msg.sample
+-rwx------1    csmajs398  Feb  9 18:13     pre-applypatch.sample
+-rwx------1    csmajs1635 Feb  9 18:13     pre-commit.sample
+-rwx------1    csmajs189  Feb  9 18:13     post-update.sample
+-rwx------1    csmajs3611 Feb  9 18:13     update.sample
+./   info: 
+total: 12
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs240  Feb  9 18:13     exclude
+./   heads: 
+total: 12
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs184  Feb  9 18:13     master
+./   origin: 
+total: 12
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------3    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs184  Feb  9 18:13     HEAD
+./   remotes: 
+total: 12
+drwx------3    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     origin
+./   refs: 
+total: 16
+drwx------4    csmajs4096 Feb  9 18:13     .
+drwx------3    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     heads
+drwx------3    csmajs4096 Feb  9 18:13     remotes
+./   logs: 
+total: 16
+drwx------3    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs184  Feb  9 18:13     HEAD
+drwx------4    csmajs4096 Feb  9 18:13     refs
+./   info: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+./   pack: 
+total: 100
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------4    csmajs4096 Feb  9 18:13     ..
+-r--------1    csmajs80180Feb  9 18:13     pack-8d1f11270161a867710ebc3e5bd06b78c3eef75e.pack
+-r--------1    csmajs5048 Feb  9 18:13     pack-8d1f11270161a867710ebc3e5bd06b78c3eef75e.idx
+./   objects: 
+total: 16
+drwx------4    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     info
+drwx------2    csmajs4096 Feb  9 18:13     pack
+./   heads: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------5    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs41   Feb  9 18:13     master
+./   origin: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------3    csmajs4096 Feb  9 18:13     ..
+-rw-------1    csmajs32   Feb  9 18:13     HEAD
+./   remotes: 
+total: 12
+drwx------3    csmajs4096 Feb  9 18:13     .
+drwx------5    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     origin
+./   tags: 
+total: 8
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------5    csmajs4096 Feb  9 18:13     ..
+./   refs: 
+total: 20
+drwx------5    csmajs4096 Feb  9 18:13     .
+drwx------8    csmajs4096 Feb  9 18:13     ..
+drwx------2    csmajs4096 Feb  9 18:13     heads
+drwx------3    csmajs4096 Feb  9 18:13     remotes
+drwx------2    csmajs4096 Feb  9 18:13     tags
+./   .git: 
+total: 48
+drwx------8    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+drwx------2    csmajs4096 Feb  9 18:13     branches
+-rw-------1    csmajs260  Feb  9 18:13     config
+-rw-------1    csmajs73   Feb  9 18:13     description
+drwx------2    csmajs4096 Feb  9 18:13     hooks
+-rw-------1    csmajs23   Feb  9 18:13     HEAD
+drwx------2    csmajs4096 Feb  9 18:13     info
+-rw-------1    csmajs656  Feb  9 18:13     index
+drwx------3    csmajs4096 Feb  9 18:13     logs
+drwx------4    csmajs4096 Feb  9 18:13     objects
+-rw-------1    csmajs389  Feb  9 18:13     packed-refs
+drwx------5    csmajs4096 Feb  9 18:13     refs
+./   bin: 
+total: 104
+drwx------2    csmajs4096 Feb  9 19:02     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rwx------1    csmajs64991Feb  9 19:02     ls
+-rwx------1    csmajs30584Feb  9 19:02     rshell
+./   src: 
+total: 24
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+./   test: 
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for all flag
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+test
+exec.script ls.script 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for directories as arguments
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src test
+src:
+ls.cpp main.cpp 
+test:
+exec.script ls.script 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a src test
+src:
+. .. ls.cpp main.cpp 
+test:
+. .. exec.script ls.script 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a -l src test
+src:
+total: 24
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+test :
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-la src test
+src:
+total: 24
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+test :
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for combination of directories and flags
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+test -al
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+test -R
+test: 
+exec.script ls.script 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+test -a -R -l #different combinations of flags
+test:
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src -aaaaaaaaaaaalR
+src: 
+total: 24
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src -aaaaR test -l
+src:
+total: 24
+drwx------2    csmajs4096 Feb  9 18:13     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+test :
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for different combinations of flags
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo such as -aaaaa -lllllllll -RRRR -allRal
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+;;;;;;;;;;;;;;;; #special characters
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+||||||
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for special characters repeated
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.
+bin LICENSE Makefile NEWlstest.script README.md src test tester testscripts.txt 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+..
+lab rshell rshelldntopen 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for . and .. directories
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+./ -R
+./: 
+bin LICENSE Makefile NEWlstest.script README.md src test tester testscripts.txt 
+./bin: 
+ls rshell 
+./src: 
+ls.cpp main.cpp 
+./test: 
+exec.script ls.script 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+./ -l
+total: 48
+drwx------2    csmajs4096 Feb  9 19:02     bin
+-rw-------1    csmajs18545Feb  9 18:13     LICENSE
+-rw-------1    csmajs495  Feb  9 18:13     Makefile
+-rw-------1    csmajs0    Feb  9 19:01     NEWlstest.script
+-rw-------1    csmajs2461 Feb  9 18:13     README.md
+drwx------2    csmajs4096 Feb  9 18:13     src
+drwx------2    csmajs4096 Feb  9 19:01     test
+-rwx------1    csmajs224  Feb  9 18:53     tester
+-rw-------1    csmajs2188 Feb  9 18:53     testscripts.txt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+./ -a
+. .. .git bin LICENSE Makefile NEWlstest.script README.md src test tester testscripts.txt 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for special character combinations
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+..........
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+///////
+boot bin class cgroup C:\nppdf32Log\debuglog.txt dev etc extra home lib64 lost+found lib mnt media misc net opt proc root srv sys selinux sbin tmp usr var 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+12345
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for repetition of special chars
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-aaaaaaaaaaaaaaaaaaaaaa #special case of flags
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-llllllllllllllllllllll
+total: 48
+drwx------2    csmajs4096 Feb  9 19:02     bin
+-rw-------1    csmajs18545Feb  9 18:13     LICENSE
+-rw-------1    csmajs495  Feb  9 18:13     Makefile
+-rw-------1    csmajs0    Feb  9 19:01     NEWlstest.script
+-rw-------1    csmajs2461 Feb  9 18:13     README.md
+drwx------2    csmajs4096 Feb  9 18:13     src
+drwx------2    csmajs4096 Feb  9 19:01     test
+-rwx------1    csmajs224  Feb  9 18:53     tester
+-rw-------1    csmajs2188 Feb  9 18:53     testscripts.txt
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-RRRRRRRRRRRRRRRRR #special case of flags
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-ALRALRALR
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+^^^
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+(
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+)
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+()
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+,,,,,,,,,
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+lalala
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+bin LICENSE Makefile NEWlstest.script README.md src test tester testscripts.txt
+bin:
+ls rshell 
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+lslsls #multiple ls
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+&&
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%% #special character
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo all above tests for special chars all in different combinations
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+a #single character
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for a single character as input
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.............
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+=========
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-alRlRlraAAA #speccial case
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-fffffffff
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$$$$$$
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a-l-R
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-aR -l test
+test: 
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+testsrc
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+test test test test #multiple directories
+test:
+exec.script ls.script 
+test:
+exec.script ls.script 
+test:
+exec.script ls.script 
+test:
+exec.script ls.script 
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for a combination of directories
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src test src
+src:
+ls.cpp main.cpp 
+test:
+exec.script ls.script 
+src:
+ls.cpp main.cpp 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src -l test -R
+src:
+total: 16
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+test :
+total: 32
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+test -R -l src #mixing combinations of flags and directories
+test:
+total: 32
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+src  :
+total: 16
+-rw-------1    csmajs6591 Feb  9 18:13     ls.cpp
+-rw-------1    csmajs6738 Feb  9 18:13     main.cpp
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing multiple directories and flags out of order
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-R test -R src -R src
+test:
+exec.script ls.script 
+src:
+ls.cpp main.cpp 
+src:
+ls.cpp main.cpp 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src test -a src -a src
+src:
+. .. ls.cpp main.cpp 
+test:
+. .. exec.script ls.script 
+src:
+. .. ls.cpp main.cpp 
+src:
+. .. ls.cpp main.cpp 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a -a -a ls
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a-a-a-a #combining flags should not work
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-l-l-l
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a-l-R
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-l-l -R -a
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-llllllR test -a
+test: 
+total: 40
+drwx------2    csmajs4096 Feb  9 19:01     .
+drwx------6    csmajs4096 Feb  9 19:02     ..
+-rw-------1    csmajs2487 Feb  9 18:13     exec.script
+-rw-------1    csmajs25437Feb  9 18:13     ls.script
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing for invalid forms of inputs for flags
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+testing
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-a -R -l -a testing #right flags, wrong directory
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ls /ls
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src -L #right directory wrong flag
+ERROR OCCURRED++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Makefile
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing what happens if directory is not there
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+README.md #testing on files not directories
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+09827 #testing on number inputs
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+jkjkjk
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+./test
+exec.script ls.script 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo testing from input of numbers
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+src/main.cpp #testing if to see if it reaches inside
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+../...
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+rshell
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo all normal functions of program work
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo all flags work and all inputs to the program work
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo only special characters and some special cases have bugs, everything else works.
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+exit
+xargs: bin/ls: terminated by signal 11
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+~/CS100/rshell
+yli066@hammer $ exit
+exit
+
+Script done on Mon 09 Feb 2015 07:06:00 PM PST
