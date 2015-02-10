@@ -69,6 +69,10 @@ For hw1:
 
 -the only time where bugs can be found is when you mix special characters into the commands.
 
+#TESTING: 
 
+For HW1, I have a made test executable named "tester" that can be found under the test folder so I can run my testcases, which are all listed in testscripts.txt, automatically without having to have the user input each 
+testcase manually. The script that I got from my tester executable can be found in the file "NEWlstest.script". Each of the tests are separated by 2 lines of "+" symbols so each separate test can be easily seen. I have 
+also included comments along with the test cases. The "NEWlstest.script" shows both the command being typed in and the results from that command. Please disregard the test script "ls.script" and use the "NEWlstest.script" instead. Thank you. 
 
 
