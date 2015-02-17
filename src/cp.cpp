@@ -12,7 +12,7 @@
 
 using namespace std;
 
-static const char* INPUT = "/usr/share/dict/linux.words";
+//static const char* INPUT = "/usr/share/dict/linux.words";
 #define PRINTTIME(eTime) cout << "User time: " << eTime << endl; \
 	t.elapsedWallclockTime(eTime); \
 	cout << "Wallclock time: " << eTime << endl;\
