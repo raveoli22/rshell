@@ -48,54 +48,129 @@ bool system(std::vector<char*> com){
 }
 
 void fixline(string &input){
+	size_t place = input.find("#");
+    	if (place != 1 && place != 0){
+        	input = input.substr(0,place);
+    	}
+	
+	size_t check = 0;
+	size_t checkagain = 0; 
+    	size_t pos = 0;
+    	while (check < input.size()){ // search string for the first connector ;
+       		
+        	check = input.find(";",check+1,1);
+        	if (check != string::npos && pos != check){
+            		input.replace(check,1," ; "); //if found replace with spaces
+			check = check + 2;
+            		pos = check+1;
+        	}
 
-    size_t place = input.find("#");
-    if (place != 1 && place != 0){
-        input = input.substr(0,place);
-    }
+    	}	
 
-    //cout << "not in loop";
+    	check = 0;
+    	pos = 0;
+    	while (pos < input.size()){
+        	check = input.find("&&",check+2,2); //search string for second connector &&
+        	if (check != string::npos && pos!= check){
+            		input.replace(check,2," && "); //if found replace spaces
+			check = check+2;
+        	}
+        	else {
+            		check = input.size();
+        	}
 
-    size_t check = 0;
-    size_t pos = 0;
-    while (check < input.size()){ // search string for the first connector ;{
-       //cout << "in loop 1";
-        check = input.find(";",check+1,1);
-        if (check != string::npos && pos != check){
-            input.replace(check,1," ; "); //if found replace with spaces
-            pos = check+1;
-        }
+        	pos = check+2;
+    	}
+	
+	check = 0;
+	pos = 0;
+	while (pos < input.size()){
+	        check = input.find("||",check+2,2);
+		if (check != string::npos && pos!=check){ //search string for third connector ||
+		    input.replace(check,2," || "); //if found replace with spaces
+		    check = check + 2; 
+		}
+		else {
+		    check = input.size();
+		}
+		pos = check+2;
+	}
 
-    }
+	check = 0; 
+	pos = 0;
+	checkagain = 0;
+	while (pos < input.size()){
+		check = input.find("|",check+1,1);
+		checkagain = input.find("|",check+1,1);
+		cout << check << endl;
+		cout << checkagain << endl;
+		if (checkagain == check+1){
+			check = checkagain;
+			pos = checkagain+1;
+		}
+		else { 
+			if (check != string::npos && pos != check){
+				input.replace(check,1," | ");
+				check=check+2;
+			}
+			else {
+				check = input.size();
+			}
+			pos = check+1;
+		}
+	}
+	
+	check = 0;
+	pos = 0;
+	while (pos < input.size()){
+		check = input.find("<",check+1,1);
+		if (check != string::npos && pos != check){
+			input.replace(check,1," < ");
+			check = check + 2; 
+		}
+		else {
+			check = input.size();
+		}
+		pos = check +1; 
+	}
+	
+	check = 0;
+	pos = 0;
+	while (pos < input.size()){
+		check = input.find(">>",check+2,2);
+		if (check != string::npos && pos != check){
+			input.replace(check,2," >> ");
+			check = check + 2;
+		}
+		else {
+			check = input.size();
+		}
+		pos = check + 2;
+	}
+	
+	check = 0; 
+	pos = 0;
+	checkagain = 0; 
+	while (pos < input.size()){
+		check = input.find(">",check+1,1);
+		checkagain = input.find(">",check+1,1);
+		if (checkagain == check + 1){
+			check = checkagain;
+			pos = checkagain + 1;
+		}
+		else{
+			if (check != string::npos && pos != check){
+				input.replace(check,1," > ");
+				check = check + 2;
+			}
+			else {
+				check = input.size();
+			}
+			pos = check + 1;
+		} 
+	}
 
-    check = 0;
-    pos = 0;
-    while (pos < input.size()){
-       // cout << "in loop 2";
-        check = input.find("&&",check+2,2); //search string for second connector &&
-        if (check != string::npos && pos!= check){
-            input.replace(check,2," && "); //if found replace spaces
-        }
-        else {
-            check = input.size();
-        }
-
-        pos = check+2;
-    }
-
-    check = 0;
-    pos = 0;
-    while (pos < input.size()){
-       // cout << "in loop 3";
-        check = input.find("||",check+2,2);
-        if (check != string::npos && pos!=check){ //search string for third connector ||
-            input.replace(check,2," || "); //if found replace with spaces
-        }
-        else {
-            check = input.size();
-        }
-        pos = check+2;
-    }
+	
 }
 
 int main(){
@@ -112,13 +187,16 @@ int main(){
     getlogin_r(username,200);
 
     while (1){
-        bool orflag = false;
-        std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
+        /*bool orflag = false;*/
+	std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
         getline(std::cin,userinput);
 
         fixline(userinput);
-       //cout << userinput;
-
+        cout << userinput;
+	cout << endl;
+	}
+}
+/*
         char *token = std::strtok(const_cast<char*>(userinput.c_str()), " ");
         while (token != NULL){
             commands.push_back(token);
@@ -127,9 +205,11 @@ int main(){
 
 
 
- /*      for (int i = 0; i < commands.size(); i++){
-           cout << commands.at(i) << endl;
-       }*/
+
+
+       //for (int i = 0; i < commands.size(); i++){
+          // cout << commands.at(i) << endl;
+       //}
 
         bool first = true;
         bool test = true;
@@ -139,13 +219,13 @@ int main(){
             //bool test = true;
             single = commands.at(i);
 
-/*            if (single == "false"){
-                test = false;
-            }
-            if (single == "true"){
-                test = true;
-		first = false;
-            }*/
+            //if (single == "false"){
+               // test = false;
+            //}
+            //if (single == "true"){
+               // test = true;
+		//first = false;
+            //}
 
             if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
                 if (first){ //if its the first command
@@ -233,5 +313,5 @@ int main(){
 	commands.clear(); //clear command list
     }
 
-}
+}*/
 
