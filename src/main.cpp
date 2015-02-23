@@ -248,13 +248,14 @@ int main(){
     char hostname[200];
     char username[200];
     vector <char*> commands;
-    
+    vector <char*> subvec;
     vector <char*> wordlist;
     vector <char*> executes; 
     int select = 0;
     string single;
     string userinput;
-    char* filename = '\0'; 
+    char* filename = NULL;
+    size_t count = 0; 
     gethostname(hostname, 200);
     getlogin_r(username,200);
 
@@ -271,7 +272,6 @@ int main(){
             commands.push_back(token);
             token = std::strtok(NULL, " ");
         }
-	commands.push_back('\0');
 	
 	for (size_t i = 0; i < commands.size(); i++){
 		string checking = commands.at(i);
@@ -279,33 +279,35 @@ int main(){
 			rediractivate = true;
 		}
 	}
-		
-	if (rediractivate){
-		string connector; 
-		size_t count = 0;
-		vector<char*> subvec; 
-		for (size_t j = 0; j < commands.size(); j++){
+	count = 0;	
+	while (rediractivate){
+		string connector;
+		size_t postrack = count;   
+		for (size_t j = count; j < commands.size(); j++){ 
 			connector = commands.at(j);
 			if (connector == ";"){
-				for (size_t i = 0; i < count; i++){
+				for (size_t i = postrack; i < count; i++){
 					subvec.push_back(commands.at(i));
 				}
 				break;
 			}
 			else if (connector == "&&"){
-				for (size_t i = 0; i < count; i++){
+				for (size_t i = postrack; i < count; i++){
 					subvec.push_back(commands.at(i));
 				}
 				break;
 			}
 			else if (connector == "||"){
-				for (size_t i = 0; i < count; i++){
+				for (size_t i = postrack; i < count; i++){
 					subvec.push_back(commands.at(i));
 				}
 				break;
 			}
-			else if (connector == "\0"){
-				for (size_t i = 0; i < count; i++){
+			else if (connector == "exit"){
+				exit(1);
+			}
+			else if (j == commands.size()-1){
+				for (size_t i = postrack; i < count+1; i++){
 					subvec.push_back(commands.at(i));
 				}
 				break;
@@ -314,28 +316,37 @@ int main(){
 				count++;
 			}
 		}
+		//for (size_t i = 0; i < subvec.size(); i++){
+			//cout << subvec.at(i) << endl;
+		//}
+		
+		if (subvec.size() == 0){
+			for (size_t i = 0; i < commands.size()-1; i++){
+				subvec.push_back(commands.at(i));
+			}
+		}
 		
 		size_t i = 0;
-		while (i < commands.size()) {
-			string mystr = commands.at(i);
+		while (i < subvec.size()) {
+			string mystr = subvec.at(i);
 			if (mystr == ">"){
 				i = i + 1;
 				select = 2;
-				filename = commands.at(i);
+				filename = subvec.at(i);
 				system(executes,filename,select);
 				executes.clear();
 			}
 			else if (mystr == ">>"){
 				i = i + 1;
 				select = 3;
-				filename = commands.at(i);
+				filename = subvec.at(i);
 				system(executes,filename,select);
 				executes.clear();
 			}
 			else if (mystr == "<"){
 				i = i + 1;
 				select = 1;
-				filename = commands.at(i);
+				filename = subvec.at(i);
 				system(executes,filename,select);
 				executes.clear();
 			}
@@ -343,17 +354,20 @@ int main(){
 				//piping
 			}
 			else {
-				executes.push_back(commands.at(i));
+				executes.push_back(subvec.at(i));
 			}
 			i++;
 		}
-		commands.clear();
+		subvec.clear();
+		if (count == commands.size()-1){
+			break;
+		}
 			
 	}
 
 
 
-	else {
+        if (!rediractivate){
 		bool first = true;
         	bool test = true;
 		select = 0;
