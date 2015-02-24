@@ -255,13 +255,19 @@ int main(){
     string single;
     string userinput;
     char* filename = NULL;
-    size_t count = 0; 
+    size_t count = 0;
+    //size_t counter2 = 0; 
     gethostname(hostname, 200);
     getlogin_r(username,200);
 
     while (1){
         bool orflag = false;
 	bool rediractivate = false;
+	bool isfirstcommand = true;
+	bool previouspassed = false;
+	int connectorchk = 0; 
+	int mustbreak = 0; 
+	
 	std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
         getline(std::cin,userinput);
 
@@ -281,6 +287,7 @@ int main(){
 	}
 	count = 0;	
 	while (rediractivate){
+	
 		string connector;
 		size_t postrack = count;   
 		for (size_t j = count; j < commands.size(); j++){ 
@@ -289,42 +296,92 @@ int main(){
 				for (size_t i = postrack; i < count; i++){
 					subvec.push_back(commands.at(i));
 				}
+				count++;
 				break;
 			}
 			else if (connector == "&&"){
-				for (size_t i = postrack; i < count; i++){
-					subvec.push_back(commands.at(i));
+				connectorchk = 1;
+				if (isfirstcommand){
+					for (size_t i = postrack; i < count; i++){
+						subvec.push_back(commands.at(i));
+					}
+					isfirstcommand = false;
+					count++;
+					break;
 				}
-				break;
+				else if (previouspassed){
+					for (size_t i = postrack; i < count; i++){
+						subvec.push_back(commands.at(i));
+					}
+					count++;
+					break;
+				}
+				else if (!previouspassed){
+					mustbreak++;
+					cout << "Previous failed" << endl;
+					break;
+				}
+
 			}
 			else if (connector == "||"){
-				for (size_t i = postrack; i < count; i++){
-					subvec.push_back(commands.at(i));
+				connectorchk = 2; 
+				if (isfirstcommand){
+					for (size_t i = postrack; i < count; i++){
+						subvec.push_back(commands.at(i));
+					}
+					isfirstcommand = false;
+					count++;
+					break;
 				}
-				break;
+				else if (!previouspassed){
+					for (size_t i = postrack; i < count; i++){
+						subvec.push_back(commands.at(i));
+					}
+					count++;
+					break;
+				}
+				else if (previouspassed){
+					mustbreak++;
+					cout << "Previous passed!!!" << endl;
+					break;
+				}
 			}
 			else if (connector == "exit"){
 				exit(1);
 			}
-			else if (j == commands.size()-1){
-				for (size_t i = postrack; i < count+1; i++){
+			else if (j == commands.size()-1 && connectorchk > 0){
+				if (connectorchk == 1 && previouspassed){
+					for (size_t i = postrack; i < commands.size(); i++){
+						subvec.push_back(commands.at(i));
+					}
+					break;
+				}
+				else if (connectorchk == 2 && !previouspassed){
+					for (size_t i = postrack; i < commands.size(); i++){
+						subvec.push_back(commands.at(i));
+					}
+					break;
+				}
+				else {
+					cout << "cannot run command!!!" << endl;
+					break;
+				}
+			}
+			else if (j == commands.size()-1 && connectorchk == 0){
+				for (size_t i = postrack; i < commands.size(); i++){
 					subvec.push_back(commands.at(i));
 				}
 				break;
 			}
+			
 			else {
 				count++;
 			}
 		}
 		//for (size_t i = 0; i < subvec.size(); i++){
-			//cout << subvec.at(i) << endl;
+		//	cout << subvec.at(i) << endl;
 		//}
-		
-		if (subvec.size() == 0){
-			for (size_t i = 0; i < commands.size()-1; i++){
-				subvec.push_back(commands.at(i));
-			}
-		}
+		//cout << "one loop" << endl;
 		
 		size_t i = 0;
 		while (i < subvec.size()) {
@@ -333,21 +390,35 @@ int main(){
 				i = i + 1;
 				select = 2;
 				filename = subvec.at(i);
-				system(executes,filename,select);
+				previouspassed = system(executes,filename,select);
 				executes.clear();
 			}
 			else if (mystr == ">>"){
 				i = i + 1;
 				select = 3;
 				filename = subvec.at(i);
-				system(executes,filename,select);
+				previouspassed = system(executes,filename,select);
 				executes.clear();
 			}
 			else if (mystr == "<"){
 				i = i + 1;
 				select = 1;
 				filename = subvec.at(i);
-				system(executes,filename,select);
+				previouspassed = system(executes,filename,select);
+				executes.clear();
+			}
+			else if (mystr == "false"){
+				executes.push_back(subvec.at(i));
+				select = 0;  
+				previouspassed = system(executes,filename,select);
+				previouspassed = false;
+				executes.clear();	
+			}
+			else if (mystr == "true"){
+				executes.push_back(subvec.at(i));
+				select = 0;
+				previouspassed = system(executes,filename,select);
+				previouspassed = true;
 				executes.clear();
 			}
 			else if (mystr == "|"){
@@ -359,9 +430,16 @@ int main(){
 			i++;
 		}
 		subvec.clear();
+		
 		if (count == commands.size()-1){
+			commands.clear();
 			break;
 		}
+		if (mustbreak > 0){
+			commands.clear();
+			break;
+		}
+
 			
 	}
 
