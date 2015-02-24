@@ -389,7 +389,7 @@ another  bin  LICENSE  Makefile  new  newfile  newfile2  README.md  redirect.scr
 yli066@hammer.cs.ucr.edu$ls
 another  bin  LICENSE  Makefile  new  newfile  newfile2  README.md  redirect.script  src  test
 yli066@hammer.cs.ucr.edu$exit
-~/CS100/rshell
+~/CS100/rshell
 yli066@hammer $ #PIPING DOES NOT WORK, THEREFORE WILL NOT NEED TO BE TESTED IN SCRIPT
 yli066@hammer $ #ALL CONNECTORS WORK, ONLY FEW SPECIFIC CASES DO NOT WORK, FEW BUGS
 yli066@hammer $ #OTHER THEN FEW BUGS, CONNECTORS WORK ALONG WITH ALL IO REDIRECTION
