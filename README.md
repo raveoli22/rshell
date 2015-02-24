@@ -90,7 +90,9 @@ For hw2:
 
 -IO redirection does not work if both are used in the same line, for example: wc < file > file2
 
--some special characters, if used as input, will cause unexpected errors 
+-some special characters, if used as input, will cause unexpected errors
+
+-a few cases with connectors will not work correctly with IO redirection. However, most cases will, there are only a couple bugs. Those bugs can be seen in the test cases.  
 
 #TESTING: 
 
