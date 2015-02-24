@@ -9,6 +9,9 @@ The || connector will only execute the following command if the first command fa
 #HW1 Description
 This program is a copy of the original BASH terminal implementation of the ls command. It works just like the way it does in the original terminal. However, only the flags -a -l and -R are implemented in this version. This program will allow the user to use these flags to tell them about the files within each directory. The command bin/ls will print all the current files and directories within the current working directory. The -a flag will print out all files including hidden files. The -l flag will print out the permissions, time, and size of the files. The -R flag will print out recursively all of the directories, files, and all of those that are within each directory as well. 
 
+#HW2 Description
+This program is a copy of the original BASH terminal implementation of piping and IO redirection. It works just like the way it does in the original terminal. However, there are many bugs, so you ought to be careful while using it. The command bin/rshell will run the executable program. The > and >> connectors will allow for output redirection, which will put the output of a program into a file. The difference between > and >> is that > will either overwrite or create a new file while >> will either append or create a new file. The < is used for input redirection, or in other words, used to take input from a file. However, if the file does not exist, input redirection will not work. The | connector is used for piping, but it does not work in this implementation of the BASH terminal. 
+ 
 #How to use
 Run this program in a linux terminal, however, it is not guarantee to run correctly.
 
@@ -36,6 +39,18 @@ $git checkout hw1
 $make
 
 $bin/ls
+
+For HW2:
+
+$git clone https://github.com/raveoli22/rshell.git
+
+$cd rshell 
+
+$git checkout hw2
+
+$make
+
+$bin/rshell
 
 
 #Prerequisites
@@ -68,6 +83,14 @@ For hw1:
 -although special characters do not work, all flags work in every combination, and all of the different combinations of directories work. Everything works fine except for special character cases.
 
 -the only time where bugs can be found is when you mix special characters into the commands.
+
+For hw2:
+
+-piping does not work correctly
+
+-IO redirection does not work if both are used in the same line, for example: wc < file > file2
+
+-some special characters, if used as input, will cause unexpected errors 
 
 #TESTING: 
 
