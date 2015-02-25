@@ -19,15 +19,14 @@ yli066@hammer $ cs100
 |   * man                   find help about any syscall / terminal command    |
 |                                                                             |
 ===============================================================================
-[0m
-[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd CS100
-[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100[0;95m (master) [0;36m$[0m cd rshell
-[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m make
+yli066@cs100:~ $ cd CS100
+yli066@cs100:~/CS100 (master) $ cd rshell
+yli066@cs100:~/CS100/rshell (master) $ make
 mkdir -p ./bin
 g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell 
 g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
 g++ -Wall -Werror -ansi -pedantic ./src/cp.cpp -o ./bin/cp
-[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m bin/rshell
+yli066@cs100:~/CS100/rshell (master) $ bin/rshell
 yli066@hammer.cs.ucr.edu$ls;ls;ls;
 bin  ioredirect.script	LICENSE  Makefile  README.md  src  test
 bin  ioredirect.script	LICENSE  Makefile  README.md  src  test
@@ -291,7 +290,7 @@ yli066@hammer.cs.ucr.edu$ls -l | less
 yli066@hammer.cs.ucr.edu$  #piping does not work at all
 yli066@hammer.cs.ucr.edu$  #except for piping and a few bugs, all IO redirections work with connectors
 yli066@hammer.cs.ucr.edu$exit
-[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m exit
+yli066@cs100:~/CS100/rshell (master) $ exit
 exit
 ~
 yli066@hammer $ exit
