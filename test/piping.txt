@@ -1,0 +1,61 @@
+ls;ls;ls;
+ls&&ls&&ls
+false||ls
+true&&ls
+
+#above proves connectors work 
+
+ls > new1
+ls
+cat < new1
+ls
+ls >> new1
+cat < new1
+wc < new1
+ls > new1
+ls
+wc < new1
+
+#above proves simple IO redirection works
+
+ls > new1; ls > new2
+ls
+cat < new1; cat < new2;
+ls > new1; ls >> new2;
+cat<new1;cat<new2;
+ls
+false||cat<new2
+true||cat<new2
+false&&cat<new1
+true&&cat<new2
+wc < new2 && cat < new2
+wc < new1 || cat < new1
+
+#above shows simple connector with redirections 
+
+false||true||wc<new2
+true||false||wc<new2
+true&&false&&wc<new2
+true&&true&&wc<new2
+wc < new1 && wc < new2 && cat < new1
+wc < new1 || wc < new2 || cat < new1
+false || false || wc < new1
+false || wc < new1 || cat < new1
+true || wc < new2 || cat < new2
+false && wc < new1 && cat < new1
+true && wc << new2 && cat < new2
+false || wc < new2 && cat < new2
+true && wc < new1 || wc < new2
+true || wc < new1 && wc < new2
+false && wc < new2 << cat < new2 
+
+#above tests for complicated connector IO redirections
+
+wc < new1 > newfile
+#this is a bug, does not work
+
+ls -l | less
+#piping does not work at all
+#no test cases made for piping because it does not work
+
+
