@@ -1,0 +1,101 @@
+Script started on Mon 09 Mar 2015 02:17:56 AM PDT
+~
+yli066@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.  Everything you do is being   |
+| recorded to measure your progress in the class.                             |
+|                                                                             |
+| Important commands for the class:                                           |
+|   * calcgrade.sh          displays a detailed breakdown of your grade       |
+|   * typespeed             practice typing unix commands                     |
+|                                                                             |
+| Important commands for general C++ programming:                             |
+|   * make                  don't call g++ manually; let make do the work!    |
+|   * gdb                   the GNU debugger                                  |
+|   * valgrind              get rid of your memory leaks                      |
+|   * cppcheck              static analysis tool                              |
+|   * man                   find help about any syscall / terminal command    |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd CS100
+[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100[0;95m (master) [0;36m$[0m cd rshell
+[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m make
+mkdir -p ./bin
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell 
+g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
+g++ -Wall -Werror -ansi -pedantic ./src/cp.cpp -o ./bin/cp
+g++ -Wall -Werror -ansi -pedantic ./src/signals.cpp -o ./bin/signals
+[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m bin/signals
+yli066@hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@hammer.cs.ucr.edu$  #testing for cd with no args gives error
+yli066@hammer.cs.ucr.edu$cd
+EXECV ERROR: No such file or directory
+You are in child processyli066@hammer.cs.ucr.edu$
+yli066@hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@hammer.cs.ucr.edu$  #testing cd with path an single arg and with path
+yli066@hammer.cs.ucr.edu$cd testdir2
+yli066@hammer.cs.ucr.edu$ls
+files  files2
+yli066@hammer.cs.ucr.edu$cd ..
+yli066@hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@hammer.cs.ucr.edu$cd testdir1/testdirinside/a
+yli066@hammer.cs.ucr.edu$ls
+file1  file2
+yli066@hammer.cs.ucr.edu$cd ..
+yli066@hammer.cs.ucr.edu$ls
+a  b  c
+yli066@hammer.cs.ucr.edu$cd ..
+yli066@hammer.cs.ucr.edu$ls
+testdirinside
+yli066@hammer.cs.ucr.edu$cd ..
+yli066@hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@hammer.cs.ucr.edu$  #testing cd with multiple args
+yli066@hammer.cs.ucr.edu$cd testdir1 testdir2
+EXECV ERROR: No such file or directory
+You are in child processyli066@hammer.cs.ucr.edu$
+yli066@hammer.cs.ucr.edu$ls && cd testdir1
+testdirinside
+Error with chdir: No such file or directory
+yli066@hammer.cs.ucr.edu$ls
+testdirinside
+yli066@hammer.cs.ucr.edu$cd ..
+yli066@hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@hammer.cs.ucr.edu$  #testing for ^c signal
+yli066@hammer.cs.ucr.edu$^Csignal C caught
+
+yli066@hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@hammer.cs.ucr.edu$cd src
+yli066@hammer.cs.ucr.edu$ls
+cp.cpp	ls.cpp	main.cpp  signals.cpp  test.out  testsig.cpp  Timer.h
+yli066@hammer.cs.ucr.edu$./test.out
+THIS IS A TEST
+THIS IS A TEST
+THIS IS A TEST
+THIS IS A TEST
+THIS IS A TEST
+THIS IS A TEST
+^Csignal C caught
+yli066@hammer.cs.ucr.edu$  #^C signal works
+yli066@hammer.cs.ucr.edu$  #cd works 
+yli066@hammer.cs.ucr.edu$  #code is modified to use execv and getenv
+yli066@hammer.cs.ucr.edu$cd .
+yli066@hammer.cs.ucr.edu$ls
+cp.cpp	ls.cpp	main.cpp  signals.cpp  test.out  testsig.cpp  Timer.h
+yli066@hammer.cs.ucr.edu$e   #everything works w for this homework assignment
+yli066@hammer.cs.ucr.edu$exit
+[s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m exit
+exit
+~
+yli066@hammer $ exit
+exit
+
+Script done on Mon 09 Mar 2015 02:26:18 AM PDT
