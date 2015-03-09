@@ -1,4 +1,4 @@
-Script started on Mon 09 Mar 2015 02:17:56 AM PDT
+Script started on Mon 09 Mar 2015 03:16:13 PM PDT
 ~
 yli066@hammer $ cs100
 [0;91m
@@ -29,54 +29,22 @@ g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
 g++ -Wall -Werror -ansi -pedantic ./src/cp.cpp -o ./bin/cp
 g++ -Wall -Werror -ansi -pedantic ./src/signals.cpp -o ./bin/signals
 [s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m bin/signals
-yli066@hammer.cs.ucr.edu$ls
-bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
-yli066@hammer.cs.ucr.edu$  #testing for cd with no args gives error
-yli066@hammer.cs.ucr.edu$cd
-EXECV ERROR: No such file or directory
-You are in child processyli066@hammer.cs.ucr.edu$
-yli066@hammer.cs.ucr.edu$ls
-bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
-yli066@hammer.cs.ucr.edu$  #testing cd with path an single arg and with path
-yli066@hammer.cs.ucr.edu$cd testdir2
-yli066@hammer.cs.ucr.edu$ls
-files  files2
-yli066@hammer.cs.ucr.edu$cd ..
-yli066@hammer.cs.ucr.edu$ls
-bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
-yli066@hammer.cs.ucr.edu$cd testdir1/testdirinside/a
-yli066@hammer.cs.ucr.edu$ls
-file1  file2
-yli066@hammer.cs.ucr.edu$cd ..
-yli066@hammer.cs.ucr.edu$ls
-a  b  c
-yli066@hammer.cs.ucr.edu$cd ..
-yli066@hammer.cs.ucr.edu$ls
-testdirinside
-yli066@hammer.cs.ucr.edu$cd ..
-yli066@hammer.cs.ucr.edu$ls
-bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
-yli066@hammer.cs.ucr.edu$  #testing cd with multiple args
-yli066@hammer.cs.ucr.edu$cd testdir1 testdir2
-EXECV ERROR: No such file or directory
-You are in child processyli066@hammer.cs.ucr.edu$
-yli066@hammer.cs.ucr.edu$ls && cd testdir1
-testdirinside
-Error with chdir: No such file or directory
-yli066@hammer.cs.ucr.edu$ls
-testdirinside
-yli066@hammer.cs.ucr.edu$cd ..
-yli066@hammer.cs.ucr.edu$ls
-bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
-yli066@hammer.cs.ucr.edu$  #testing for ^c signal
-yli066@hammer.cs.ucr.edu$^Csignal C caught
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #path is printed in prompt
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #testing for ^C
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #will not exit shell
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$^Csignal C caught
 
-yli066@hammer.cs.ucr.edu$ls
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
 bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
-yli066@hammer.cs.ucr.edu$cd src
-yli066@hammer.cs.ucr.edu$ls
-cp.cpp	ls.cpp	main.cpp  signals.cpp  test.out  testsig.cpp  Timer.h
-yli066@hammer.cs.ucr.edu$./test.out
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #testing ^c with cat
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$cat
+^Csignal C caught
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #testing ^c with my own program
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$cd src
+yli066@~/home/csmajs/yli066/CS100/rshell/src hammer.cs.ucr.edu$./test.out
+THIS IS A TEST
 THIS IS A TEST
 THIS IS A TEST
 THIS IS A TEST
@@ -84,18 +52,88 @@ THIS IS A TEST
 THIS IS A TEST
 THIS IS A TEST
 ^Csignal C caught
-yli066@hammer.cs.ucr.edu$  #^C signal works
-yli066@hammer.cs.ucr.edu$  #cd works 
-yli066@hammer.cs.ucr.edu$  #code is modified to use execv and getenv
-yli066@hammer.cs.ucr.edu$cd .
-yli066@hammer.cs.ucr.edu$ls
+yli066@~/home/csmajs/yli066/CS100/rshell/src hammer.cs.ucr.edu$pwd
+/home/csmajs/yli066/CS100/rshell/src
+yli066@~/home/csmajs/yli066/CS100/rshell/src hammer.cs.ucr.edu$ls
 cp.cpp	ls.cpp	main.cpp  signals.cpp  test.out  testsig.cpp  Timer.h
-yli066@hammer.cs.ucr.edu$e   #everything works w for this homework assignment
-yli066@hammer.cs.ucr.edu$exit
+yli066@~/home/csmajs/yli066/CS100/rshell/src hammer.cs.ucr.edu$cd ..
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$cd testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell/testdir2 hammer.cs.ucr.edu$ls
+files  files2
+yli066@~/home/csmajs/yli066/CS100/rshell/testdir2 hammer.cs.ucr.edu$cd ..
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #testing for cd with args will give error
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$cd
+EXECV ERROR: No such file or directory
+You are in child processyli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #testing for cd with absolute path
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$cd testdir1/testdirinside/a
+yli066@~/home/csmajs/yli066/CS100/rshell/testdir1/testdirinside/a hammer.cs.ucr.edu$ls
+file1  file2
+yli066@~/home/csmajs/yli066/CS100/rshell/testdir1/testdirinside/a hammer.cs.ucr.edu$cd ../../..
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #testing for execv by typing in random chars
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$lalalalalalala
+EXECV ERROR: No such file or directory
+You are in child processyli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #execv error is given instead execvp
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$echo ALL COMMANDS ARE RAN BY EXECV
+ALL COMMANDS ARE RAN BY EXECV
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$echo YEA EVERYTHING WORKS
+YEA EVERYTHING WORKS
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$echo AM I A GOOD PROGRAMMER?
+AM I A GOOD PROGRAMMER?
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #cd works with /bin absolute path
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$cd /bin
+yli066@~/bin hammer.cs.ucr.edu$ls
+alsaunmute  chmod		  df		 fusermount	     link      more	      readlink	 stty		  uname
+arch	    chown		  dmesg		 gawk		     ln        mount	      red	 su		  unicode_start
+awk	    cp			  dnsdomainname  gettext	     loadkeys  mountpoint     rm	 sync		  unicode_stop
+basename    cpio		  domainname	 grep		     logger    mv	      rmdir	 tar		  unlink
+bash	    csh			  dumpkeys	 gtar		     login     nano	      rnano	 taskset	  usleep
+cat	    cut			  echo		 gunzip		     ls        netstat	      rpm	 tcsh		  vi
+cgclassify  dash		  ed		 gzip		     lsblk     nice	      rvi	 touch		  view
+cgcreate    date		  egrep		 hostname	     lscgroup  nisdomainname  rview	 tracepath	  ypdomainname
+cgdelete    dbus-cleanup-sockets  env		 ipcalc		     lssubsys  ping	      sed	 tracepath6	  zcat
+cgexec	    dbus-daemon		  ex		 iptables-xml	     mail      ping6	      setfont	 traceroute
+cgget	    dbus-monitor	  false		 iptables-xml-1.4.7  mailx     plymouth       setserial  traceroute6
+cgset	    dbus-send		  fgrep		 kbd_mode	     mkdir     ps	      sh	 true
+cgsnapshot  dbus-uuidgen	  find		 keyctl		     mknod     pwd	      sleep	 ulockmgr_server
+chgrp	    dd			  findmnt	 kill		     mktemp    raw	      sort	 umount
+yli066@~/ hammer.cs.ucr.edu$cd ..
+yli066@~/ hammer.cs.ucr.edu$  #all tests work with thsi  is program
+yli066@~/ hammer.cs.ucr.edu$  #cd works perfectly fine
+yli066@~/ hammer.cs.ucr.edu$ls
+bin   cgroup  C:\nppdf32Log\debuglog.txt  etc	 home  lib64	   media  mnt  opt   root  selinux  sys  usr
+boot  class   dev			  extra  lib   lost+found  misc   net  proc  sbin  srv	    tmp  var
+yli066@~/ hammer.cs.ucr.edu$cd home
+yli066@~/home hammer.cs.ucr.edu$ls
+csmajs
+yli066@~/home hammer.cs.ucr.edu$cd csmajs
+yli066@~/home/csmajs hammer.cs.ucr.edu$cd yli066
+yli066@~/home/csmajs/yli066 hammer.cs.ucr.edu$ls
+C:\nppdf32Log\debuglog.txt  cs_10  CS61   Desktop    Downloads	Pictures	    Public     Videos
+cs10			    CS100  CS_61  Documents  Music	ProgramAssignments  Templates
+yli066@~/home/csmajs/yli066 hammer.cs.ucr.edu$cd CS100
+yli066@~/home/csmajs/yli066/CS100 hammer.cs.ucr.edu$cd rshell
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$ls
+bin  LICENSE  Makefile	README.md  src	test  testdir1	testdir2
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #program runs with execv not execvp
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #program uses enviroment variable PATH and syscall getenv
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #cd works perfectly
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #^C signal works perfef ctly and is caught by rshell
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$  #DONE SCRIPT
+yli066@~/home/csmajs/yli066/CS100/rshell hammer.cs.ucr.edu$exit
 [s%%%%%%%%%%[u[0;32myli066[0;36m@[0;32mcs100[0;36m:[0;32m~/CS100/rshell[0;95m (master) [0;36m$[0m exit
 exit
 ~
 yli066@hammer $ exit
 exit
 
-Script done on Mon 09 Mar 2015 02:26:18 AM PDT
+Script done on Mon 09 Mar 2015 03:25:18 PM PDT
