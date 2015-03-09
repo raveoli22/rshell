@@ -15,6 +15,7 @@
 #include <signal.h>
 using namespace std;
 
+void findingpath(char **argss);
 bool system(std::vector<char*> com,char* file,int whichone){
     int argc = com.size()+1;
     int status;
@@ -33,9 +34,10 @@ bool system(std::vector<char*> com,char* file,int whichone){
     else if (pid == 0) //you are in child process
     {
         std::cout << "You are in child process";	
-	if (-1 == execvp(argv[0],argv)){
+	/*if (-1 == execvp(argv[0],argv)){
 		perror("There was an error in execvp().");
-	}
+	}*/
+	findingpath(argv);
 
 	exit(1);
 	
@@ -203,15 +205,54 @@ void fixline(string &input){
 }
 
 void sighandle(int signal){
+	int pid = getpid();	
 	if (signal == SIGINT){
 		cout << "signal C caught" << endl;
+		if(pid == -1){
+			perror("ERROR");
+			exit(1);
+		}
+		else if (pid == 0){
+			exit(0);
+		}
 		return;
 	}
-	if (signal == SIGTSTP){
+	/*if (signal == SIGTSTP){
 		cout << "signal Z caught" << endl;
-		//raise(SIGSTOP);
-	}
+		if (pid > 1){
+			if (kill(pid,SIGTSTP) == -1){
+				perror ("SIGNAL Z ERRS");
+			}
+		}
+	}*/
 }
+
+void findingpath(char **argss){
+	vector<string> vec;
+	string found;
+	char *path = getenv("PATH");
+	if (path == NULL){
+		perror("ERROR WITH GET ENV");
+		exit(1);
+	}
+
+	char *token = strtok(path, ":");
+        while (token != NULL){
+	    string newstr = token; 	
+            vec.push_back(newstr);
+            token = std::strtok(NULL, ":");
+        }
+	
+	for (int i = 0; i < vec.size(); i++){
+		found = vec.at(i) + "/" + argss[0];
+		execv(found.c_str(),argss);
+	}
+	perror("EXECV ERROR");
+	exit(1);
+
+}
+	
+	
 
 int main(){
     char hostname[200];
@@ -242,7 +283,6 @@ int main(){
         getline(std::cin,userinput);
 
         fixline(userinput);
-	cout << userinput << endl;
 
 
         char *token = std::strtok(const_cast<char*>(userinput.c_str()), " ");
