@@ -12,6 +12,9 @@ This program is a copy of the original BASH terminal implementation of the ls co
 #HW2 Description
 This program is a copy of the original BASH terminal implementation of piping and IO redirection. It works just like the way it does in the original terminal. However, there are many bugs, so you ought to be careful while using it. The command bin/rshell will run the executable program. The > and >> connectors will allow for output redirection, which will put the output of a program into a file. The difference between > and >> is that > will either overwrite or create a new file while >> will either append or create a new file. The < is used for input redirection, or in other words, used to take input from a file. However, if the file does not exist, input redirection will not work. The | connector is used for piping, but it does not work in this implementation of the BASH terminal. 
  
+#HW3 Description
+This program is a copy of the original BASH terminal implementation of cd,^C function. It allows the rshell I have made to catch a ^C signal, and also has the "cd" command implemented manually. This program does not use execvp to find the commands being passed in. Instead, this program uses execv and getenv to find each of the paths separately so the BASH shell will actually run the command each time. There are no bugs in this program, everything works just fine. 
+
 #How to use
 Run this program in a linux terminal, however, it is not guarantee to run correctly.
 
@@ -52,6 +55,17 @@ $make
 
 $bin/rshell
 
+For HW3:
+
+$git clone https://github.com/raveoli22/rshell.git
+
+$cd rshell 
+
+$git checkout hw3
+
+$make
+
+$bin/rshell
 
 #Prerequisites
 
@@ -92,7 +106,11 @@ For hw2:
 
 -some special characters, if used as input, will cause unexpected errors
 
--a few cases with connectors will not work correctly with IO redirection. However, most cases will, there are only a couple bugs. Those bugs can be seen in the test cases.  
+-a few cases with connectors will not work correctly with IO redirection. However, most cases will, there are only a couple bugs. Those bugs can be seen in the test cases. 
+
+For hw3:
+
+-All cases for this assignment should work correctly.
 
 #TESTING: 
 
