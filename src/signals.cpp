@@ -243,7 +243,7 @@ void findingpath(char **argss){
             token = std::strtok(NULL, ":");
         }
 	
-	for (int i = 0; i < vec.size(); i++){
+	for (size_t i = 0; i < vec.size(); i++){
 		found = vec.at(i) + "/" + argss[0];
 		execv(found.c_str(),argss);
 	}
@@ -273,11 +273,11 @@ int main(){
 
     while (1){
         bool orflag = false;
-	bool rediractivate = false;
-	bool isfirstcommand = true;
-	bool previouspassed = false;
-	int connectorchk = 0; 
-	int mustbreak = 0; 
+	//bool rediractivate = false;
+	//bool isfirstcommand = true;
+	//bool previouspassed = false;
+	//int connectorchk = 0; 
+	//int mustbreak = 0; 
 	
 	std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
         getline(std::cin,userinput);
