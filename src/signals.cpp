@@ -273,13 +273,16 @@ int main(){
 
     while (1){
         bool orflag = false;
+	char buffer[1000];
+	string pathout; 
 	//bool rediractivate = false;
 	//bool isfirstcommand = true;
 	//bool previouspassed = false;
 	//int connectorchk = 0; 
 	//int mustbreak = 0; 
 	
-	std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
+	pathout = getcwd(buffer,1000);  
+	std::cout<< username <<"@"<<"~"<< pathout << " " << hostname<<"$"; //displaying the username and computer name on terminal
         getline(std::cin,userinput);
 
         fixline(userinput);
