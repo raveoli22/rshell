@@ -12,14 +12,13 @@
 #include <vector>
 #include <unistd.h>
 #include <stdlib.h>
+#include <signal.h>
 using namespace std;
 
+void findingpath(char **argss);
 bool system(std::vector<char*> com,char* file,int whichone){
     int argc = com.size()+1;
     int status;
-    int savestdin;
-    int savestdout;
-    int fd; 
     char **argv = new char*[argc];
     for (int i = 0; i < argc-1; i++){
         argv[i] = com[i];
@@ -35,75 +34,11 @@ bool system(std::vector<char*> com,char* file,int whichone){
     else if (pid == 0) //you are in child process
     {
         std::cout << "You are in child process";	
-	if (whichone == 1){ //input redir
-		if((savestdin = dup(0)) == -1){ //saves stdin to closes savestdin variable
-			perror("ERROR");
-		} 
-		if(access(file,F_OK) == -1){ //check if file exists
-			perror("ERROR 2");
-		}
-		if((fd = open(file,O_RDONLY))==-1){ //open FD for the file
-			perror("ERROR 3");
-		}
-		if (dup2(fd,0) == -1){ //moves file to 0 so input is redirected
-			perror("ERROR 4");
-		}
-	}
-	else if (whichone == 2){ //output redir
-		if ((savestdout = dup(1)) == -1){
-			perror("ERROR OUT REDIRECT");
-		}
-		if ((access(file,F_OK)) == -1){
-			fd = open(file,O_WRONLY|O_CREAT,00744);
-			if (fd == -1){
-				perror("ERROR OUT 4");
-			}
-		}
-		else {
-			fd = open(file,O_WRONLY|O_TRUNC,00744); 
-			if (fd == -1){
-				perror("ERROR OUT 5");
-			}
-		}
-
-		if ((dup2(fd,1)) == -1){
-			perror("ERROR OUT 3");
-		}
-	}
-	else if (whichone == 3){
-		if ((savestdout = dup(1)) == -1){
-			perror("ERROR OUT AGAIN");
-		}
-		if ((access(file,F_OK)) == -1){
-			fd = open(file,O_WRONLY|O_CREAT,00744);
-			if (fd == -1){
-				perror("ERROR OUT AGAIN 2");
-			}
-		}
-		else {
-			fd = open(file,O_WRONLY|O_APPEND,00744);
-			if (fd == -1){
-				perror("ERROR OUT AGAIN 3");
-			}
-		}
-		if ((dup2(fd,1)) == -1){
-			perror("ERROR OUT AGAIN 4");
-		}
-	}
-		
-	if (-1 == execvp(argv[0],argv)){
+	/*if (-1 == execvp(argv[0],argv)){
 		perror("There was an error in execvp().");
-	}
-	if (close(fd) == -1){
-		perror("ERROR OUT 6");
-	}
-	if (whichone == 1){
-		dup2(savestdin,0);
-	}
-	else if (whichone == 2 || whichone == 3){
-		dup2(savestdout,1);
-		cout << "moved back";
-	}	 
+	}*/
+	findingpath(argv);
+
 	exit(1);
 	
 
@@ -114,6 +49,7 @@ bool system(std::vector<char*> com,char* file,int whichone){
             exit(1);
         }
     }
+    delete []argv;
     if (status == 0)
         return true;
     return false;
@@ -125,6 +61,9 @@ void fixline(string &input){
     	if (place != 1 && place != 0){
         	input = input.substr(0,place);
     	}
+	else if (place == 0){
+		input = " ";
+	}
 	
 	size_t check = 0;
 	size_t checkagain = 0; 
@@ -242,36 +181,115 @@ void fixline(string &input){
 			pos = check + 1;
 		} 
 	}
+
+	check = 0; 
+	pos = 0;
+	checkagain = 0; 
+	while (pos < input.size()){
+		check = input.find("cd",check+2,2);
+		checkagain = input.find("cd",check+2,2);
+		if (checkagain == check + 2){
+			check = checkagain;
+			pos = checkagain + 2;
+		}
+		else{
+			if (check != string::npos && pos != check){
+				input.replace(check,2," cd ");
+				check = check + 2;
+			}
+			else {
+				check = input.size();
+			}
+			pos = check + 2;
+		} 
+	}
+	
+	
 }
+
+void sighandle(int signal){
+	int pid = getpid();	
+	if (signal == SIGINT){
+		cout << "signal C caught" << endl;
+		if(pid == -1){
+			perror("ERROR");
+			exit(1);
+		}
+		else if (pid == 0){
+			exit(0);
+		}
+		return;
+	}
+	/*if (signal == SIGTSTP){
+		cout << "signal Z caught" << endl;
+		if (pid > 1){
+			if (kill(pid,SIGTSTP) == -1){
+				perror ("SIGNAL Z ERRS");
+			}
+		}
+	}*/
+}
+
+void findingpath(char **argss){
+	vector<string> vec;
+	string found;
+	char *path = getenv("PATH");
+	if (path == NULL){
+		perror("ERROR WITH GET ENV");
+		exit(1);
+	}
+
+	char *token = strtok(path, ":");
+        while (token != NULL){
+	    string newstr = token; 	
+            vec.push_back(newstr);
+            token = std::strtok(NULL, ":");
+        }
+	
+	for (size_t i = 0; i < vec.size(); i++){
+		found = vec.at(i) + "/" + argss[0];
+		execv(found.c_str(),argss);
+	}
+	perror("EXECV ERROR");
+	exit(1);
+
+}
+	
+	
 
 int main(){
     char hostname[200];
     char username[200];
     vector <char*> commands;
-    vector <char*> subvec;
     vector <char*> wordlist;
-    vector <char*> executes; 
     int select = 0;
     string single;
     string userinput;
     char* filename = NULL;
-    size_t count = 0;
-    //size_t counter2 = 0; 
+    
+   
     gethostname(hostname, 200);
     getlogin_r(username,200);
 
+    if (SIG_ERR==signal(SIGINT,sighandle));
+    //if (SIG_ERR==signal(SIGTSTP,sighandle));
+
     while (1){
         bool orflag = false;
-	bool rediractivate = false;
-	bool isfirstcommand = true;
-	bool previouspassed = false;
-	int connectorchk = 0; 
-	int mustbreak = 0; 
+	char buffer[1000];
+	string pathout; 
+	//bool rediractivate = false;
+	//bool isfirstcommand = true;
+	//bool previouspassed = false;
+	//int connectorchk = 0; 
+	//int mustbreak = 0; 
 	
-	std::cout<< username <<"@"<<hostname<<"$"; //displaying the username and computer name on terminal
+	pathout = getcwd(buffer,1000);  
+	std::cout<< username <<"@"<< hostname<< "~" << pathout << " $ "; //displaying the username and computer name on terminal
         getline(std::cin,userinput);
 
         fixline(userinput);
+
 
         char *token = std::strtok(const_cast<char*>(userinput.c_str()), " ");
         while (token != NULL){
@@ -279,254 +297,105 @@ int main(){
             token = std::strtok(NULL, " ");
         }
 	
-	for (size_t i = 0; i < commands.size(); i++){
-		string checking = commands.at(i);
-		if (checking == ">" || checking == ">>" || checking == "|" || checking == "<"){
-			rediractivate = true;
-		}
-	}
-	count = 0;	
-	while (rediractivate){
-	
-		string connector;
-		size_t postrack = count;   
-		for (size_t j = count; j < commands.size(); j++){ 
-			connector = commands.at(j);
-			if (connector == ";"){
-				for (size_t i = postrack; i < count; i++){
-					subvec.push_back(commands.at(i));
-				}
-				count++;
-				break;
-			}
-			else if (connector == "&&"){
-				connectorchk = 1;
-				if (isfirstcommand){
-					for (size_t i = postrack; i < count; i++){
-						subvec.push_back(commands.at(i));
-					}
-					isfirstcommand = false;
-					count++;
-					break;
-				}
-				else if (previouspassed){
-					for (size_t i = postrack; i < count; i++){
-						subvec.push_back(commands.at(i));
-					}
-					count++;
-					break;
-				}
-				else if (!previouspassed){
-					mustbreak++;
-					cout << "Previous failed" << endl;
-					break;
-				}
+	bool first = true;
+	bool test = true;
+	//bool andflag = false;
+	select = 0;
+	for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
+		single = commands.at(i);
+		if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
+			if (first){ //if its the first command
+			test = system(wordlist,filename,select);
+			first = false;
+			wordlist.clear();
+			} //will always execute the command before it
+		test = system(wordlist,filename,select);
+		wordlist.clear();
 
-			}
-			else if (connector == "||"){
-				connectorchk = 2; 
-				if (isfirstcommand){
-					for (size_t i = postrack; i < count; i++){
-						subvec.push_back(commands.at(i));
-					}
-					isfirstcommand = false;
-					count++;
-					break;
-				}
-				else if (!previouspassed){
-					for (size_t i = postrack; i < count; i++){
-						subvec.push_back(commands.at(i));
-					}
-					count++;
-					break;
-				}
-				else if (previouspassed){
-					mustbreak++;
-					cout << "Previous passed!!!" << endl;
+		}
+
+		else if (single == "&&" && !wordlist.empty()){ //execute if first command is executed
+			if(first){
+				test = system(wordlist,filename,select); //if first command in line
+				first = false;
+				//andflag = true;
+				wordlist.clear();
+				if (!test){ //if the previous failed
+					//perror("first command did not execute");
+					wordlist.clear();
 					break;
 				}
 			}
-			else if (connector == "exit"){
-				exit(1);
+			else if (test && !orflag){ //if the previous command passed
+				test = system(wordlist,filename,select);
+				wordlist.clear();
+				//andflag = true;
 			}
-			else if (j == commands.size()-1 && connectorchk > 0){
-				if (connectorchk == 1 && previouspassed){
-					for (size_t i = postrack; i < commands.size(); i++){
-						subvec.push_back(commands.at(i));
-					}
-					break;
-				}
-				else if (connectorchk == 2 && !previouspassed){
-					for (size_t i = postrack; i < commands.size(); i++){
-						subvec.push_back(commands.at(i));
-					}
-					break;
-				}
-				else {
-					cout << "cannot run command!!!" << endl;
-					break;
-				}
-			}
-			else if (j == commands.size()-1 && connectorchk == 0){
-				for (size_t i = postrack; i < commands.size(); i++){
-					subvec.push_back(commands.at(i));
-				}
-				break;
-			}
-			
-			else {
-				count++;
+			else if (!test){
+				//cout << "first command did not execute" << endl;
 			}
 		}
-		//for (size_t i = 0; i < subvec.size(); i++){
-		//	cout << subvec.at(i) << endl;
-		//}
-		//cout << "one loop" << endl;
-		
-		size_t i = 0;
-		while (i < subvec.size()) {
-			string mystr = subvec.at(i);
-			if (mystr == ">"){
-				i = i + 1;
-				select = 2;
-				filename = subvec.at(i);
-				previouspassed = system(executes,filename,select);
-				executes.clear();
+		else if (single == "||" && !wordlist.empty()){ //execute if the firstcommand did not
+			if (first) { //if its the first command in line
+				test = system(wordlist,filename,select);
+				if (test){ 
+					orflag = true;
+				}
+				first = false;
+				wordlist.clear();
 			}
-			else if (mystr == ">>"){
-				i = i + 1;
-				select = 3;
-				filename = subvec.at(i);
-				previouspassed = system(executes,filename,select);
-				executes.clear();
+			else if (test && !wordlist.empty() && !orflag){
+				test = system(wordlist,filename,select);
+				wordlist.clear();
+				//cout << "first command ran so second cannot" << endl;
+				break;
 			}
-			else if (mystr == "<"){
-				i = i + 1;
-				select = 1;
-				filename = subvec.at(i);
-				previouspassed = system(executes,filename,select);
-				executes.clear();
+			else if (test && wordlist.empty()){ //if the previous command passed
+				//cout << "first command ran so second cannot" << endl;
+				wordlist.clear();
+				break;
 			}
-			else if (mystr == "false"){
-				executes.push_back(subvec.at(i));
-				select = 0;  
-				previouspassed = system(executes,filename,select);
-				previouspassed = false;
-				executes.clear();	
+			else if(!test){ //if the previous command did not pass
+				test = system(wordlist,filename,select);
+				wordlist.clear();
+				orflag = true;
 			}
-			else if (mystr == "true"){
-				executes.push_back(subvec.at(i));
-				select = 0;
-				previouspassed = system(executes,filename,select);
-				previouspassed = true;
-				executes.clear();
-			}
-			else if (mystr == "|"){
-				//piping
-			}
-			else {
-				executes.push_back(subvec.at(i));
-			}
+		}
+
+		else if (single == "exit" && !orflag){
+			exit(0); //exit rshell
+		}
+		else if (commands.size() == 1){ //if theres only 1 command typed in with no connectors
+			wordlist.push_back(commands.at(i));
+			test = system(wordlist,filename,select);
+			wordlist.clear();
+		}
+		else if (single == "cd"){
 			i++;
-		}
-		subvec.clear();
-		
-		if (count == commands.size()-1){
-			commands.clear();
-			break;
-		}
-		if (mustbreak > 0){
-			commands.clear();
-			break;
-		}
-
-			
-	}
-
-
-
-        if (!rediractivate){
-		bool first = true;
-        	bool test = true;
-		select = 0;
-        	for (unsigned int i = 0; i < commands.size(); i++){ //iterates through the commands
-			single = commands.at(i);
-			if (single == ";" &&  !wordlist.empty()){ //will execute the command before it
-                		if (first){ //if its the first command
-                    		test = system(wordlist,filename,select);
-                    		first = false;
-                    		wordlist.clear();
-                		} //will always execute the command before it
-                	test = system(wordlist,filename,select);
-                	wordlist.clear();
-
-            		}
-
-            		else if (single == "&&" && !wordlist.empty()){ //execute if first command is executed
-                		if(first){
-                    			test = system(wordlist,filename,select); //if first command in line
-                    			first = false;
-                    			wordlist.clear();
-                    			if (!test){ //if the previous failed
-                        			perror("first command did not execute");
-                        			wordlist.clear();
-                        			break;
-                    			}
-                		}
-				else if (test){ //if the previous command passed
-                    		test = system(wordlist,filename,select);
-                    		wordlist.clear();
-                		}
-                		else if (!test){
-                    			perror("first command did not execute");
-                		}
+			if(chdir(commands.at(i)) == -1){
+				perror("Error with chdir");
 			}
-			else if (single == "||" && !wordlist.empty()){ //execute if the firstcommand did not
-				if (first) { //if its the first command in line
-                    			test = system(wordlist,filename,select);
-                    			if (test){
-                        			orflag = true;
-                    			}
-                    			first = false;
-                    			wordlist.clear();
-                		}
-                		else if (test){ //if the previous command passed
-                    			perror("first command ran so second cannot");
-                    			wordlist.clear();
-                    			break;
-                		}
-				else if(!test){ //if the previous command did not pass
-					test = system(wordlist,filename,select);
-                    			wordlist.clear();
-                		}
-            		}
-
-	    		else if (single == "exit" && !orflag){
-		        	exit(0); //exit rshell
-            		}
-			else if (commands.size() == 1){ //if theres only 1 command typed in with no connectors
-                		wordlist.push_back(commands.at(i));
-                		test = system(wordlist,filename,select);
-               			wordlist.clear();
-            		}
-			else {
-                		wordlist.push_back(commands.at(i)); //pushes the commands
-                		if (i == commands.size()-1){
-                    			if (!orflag){
-                        			test = system(wordlist,filename,select);
-                        			wordlist.clear();
-                    			}
-                    			else if(orflag){ //orflag used to see if an || connector is used
-                        			perror("First command ran so second cannot");
-                        			wordlist.clear();
-                        			break;
-                    			}
-                		}		
-            		}
-        		
 		}
-		commands.clear();		
+		else {
+			wordlist.push_back(commands.at(i)); //pushes the commands
+			if (i == commands.size()-1){
+				if (!orflag){
+					test = system(wordlist,filename,select);
+					wordlist.clear();
+				}
+				else if(orflag){ //orflag used to see if an || connector is used
+					//cout << "First command ran so second cannot" << endl;
+					wordlist.clear();
+					break;
+				}
+			}		
+		}
+		
+	}
+	commands.clear();		
+
 	}
 }
-}
+
+
 
